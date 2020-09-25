@@ -191,11 +191,11 @@ Output:
  - c (circumference of the Earth)
  - r (radius of the Earth)
 
-1. angel1 <- arctan(l2/l1) (in degree measure);
-2. angel2 <- 0;
-3. angelt <- angel1-angel2;
-4. d_per_angel <- d/angelt;
-5. c <- d_per_angel*360;
+1. angle1 <- arctan(l2/l1) (in degree measure);
+2. angle2 <- 0;
+3. fangle <- angle1-angle2;
+4. d_per_angle <- d/fangel;
+5. c <- d_per_angle*360;
 6. return c;
 7. r <- c/(2*pi);
 8. return r;
