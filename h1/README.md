@@ -1,5 +1,3 @@
-[TOC]
-
 # README of h1
 
 ## About README (Ex.1)
@@ -295,6 +293,7 @@ ans2=prod(randi(10,1,5))% get a 1*5 random int from 1 to 10 and then get the pro
 ```
 
 </details>
+
 [1]:https://www.makeareadme.com/
 [2]:https://github.com/hexojs/hexo/blob/master/README.md
 [3]:https://en.wikipedia.org/wiki/Eratosthenes
