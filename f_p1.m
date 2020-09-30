@@ -14,8 +14,8 @@ function [car]=assign(n)
     car(4).num=cast(n-temp_assign(3),'uint64');
 end
 function [n,w,p,car]=init_car()
-    stfn='The total number of cars is :(int, from 0 to 32767)';
-    stfw='The width of the road is :(int, from 1 to 10)';
+    stfn='The total number of cars is :(int, from 10 to 32767)';
+    stfw='The width of the road is :(int, from 3 to 10)';
     stfp='The probability that a cars does not stop at the red light is:(real number, from 0.0 to 1.0)';
     n=input(stfn);
     w=input(stfw);
@@ -23,12 +23,17 @@ function [n,w,p,car]=init_car()
     car=assign(n);
 end
 function [g,o,r]=init_light()
-   color=["green","orange","red"];
-   temp_st1="The time for ";
-   temp_st2=" light is:";
-   g=input(temp_st1+color(1)+temp_st2);
-   o=input(temp_st1+color(2)+temp_st2);
-   r=input(temp_st1+color(3)+temp_st2);
+    color=["green","orange","red"];
+    temp_st1="The time for ";
+    temp_st2=" light is:";
+    g=input(temp_st1+color(1)+temp_st2);
+    o=input(temp_st1+color(2)+temp_st2);
+    r=input(temp_st1+color(3)+temp_st2);
+    if (g+o~=r) 
+        disp("ERROR!");
+        disp("The time for green plus the time for orange does not equal to the time for red.It will lead to traffic accidents.Please input again.");
+        [g,o,r]=init_light();
+   end
 end
 function [time,x,y]=start()
     time=0;
@@ -39,17 +44,21 @@ function [time,x,y]=start()
 end
 function [x]=checklight(time,x,r,o,g)
     x.light.time=x.light.time+1;
-    if (x.light.status==1 && x.light.time==r)
-        x.light.status=3;
-        x.light.time=0;
-    end
-    if (x.light.status==2 && x.light.time==o)
+    if (x.light.status==2 && x.light.time>=o)
         x.light.status=1;
         x.light.time=0;
     end
-    if (x.light.status==3 && x.light.time==g)
+    if (x.light.status==1 && x.light.time>=r)
+        x.light.status=3;
+        x.light.time=0;
+    end
+    if (x.light.status==3 && x.light.time>=g)
         x.light.status=2;
         x.light.time=0;
+        if (o==0)
+            x.light.status=1;
+            x.light.time=0;
+        end
     end
 end
 function draw_crossroad(w)
