@@ -1,5 +1,7 @@
 # Project 1
-## First commit in Sept $28^{th}$
+## First commit in 2020-10-01
+### How to use
+You will be asked to input several numbers( almost all are meaningless now ),after that one crossroad will appear with lights.
 ### Functions
  - f_p1: start other function
  - assign: assign cars into 4 lines
@@ -10,7 +12,7 @@
  - draw_crossroad: draw crossroad
  - draw_light: draw light
  - go: start driving
-### Feature
+### Features
  - change the color based on the iuput
  - assign cars into 4 lines (Not yet printed)
  - print the crossroad
