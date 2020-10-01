@@ -38,7 +38,7 @@ end
 </details>
 
 ## ex2
-[**OJ score 100/100**](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5f74153f91df0600061c44e1)
+[**OJ score: 100/100**](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5f74153f91df0600061c44e1)
 ### function
 - ex2: main function
 - printnum: print ans in the given form
@@ -229,3 +229,266 @@ end
 ### feather
 - allow negative number
 - allow number with decimal
+
+## ex4
+**OJ score: 100/100**
+[random](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5f7608a891df0600061c4f65)
+[iterative](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5f7608f291df0600061c4f83)
+[recursive](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5f76096591df0600061c4fb3)
+
+### function
+- ex4: choose one way
+- ex4_iterative: use iterative to solve the problem
+- ex4_recursive: use recursive to solve the problem
+
+### code
+
+<details>
+<summary>random</summary>
+
+```matlab
+function ex4()
+    format longg;
+    choice=randi(2);%randomly choose one 
+    if choice==1
+        ex4_iterative();
+    else
+        ex4_recursive(true);
+    end
+end
+function ex4_iterative()
+    i=3;
+    f=input('');
+    x=double(input(''));
+    precision=input('');
+    while true
+        x(i)=(x(i-2)*f(x(i-1))-x(i-1)*f(x(i-2)))./(f(x(i-1))-f(x(i-2)));
+        if abs(x(i)-x(i-1))<power(10,-(precision+2))
+            disp (round((x(i))*power(10,precision))/power(10,precision));
+            return;
+        end
+        i=i+1;
+    end
+end
+function ex4_recursive(flag)
+    persistent f precision x; %use persistent var to save memory
+    if flag == true
+        f=input('');
+        x=double(input(''));
+        precision=input('');
+    end
+    if (abs(x(1)-x(2))<power(10,-(precision+2)))
+        disp (round((x(1))*power(10,precision))./power(10,precision));
+        return;
+    end
+    x(1)=((x(1)*f(x(2))-x(2)*f(x(1)))./(f(x(2))-f(x(1))));
+     if (abs(x(1)-x(2))<power(10,-(precision+2)))
+        disp (round((x(1))*power(10,precision))./power(10,precision));
+        return;
+    end
+    x(2)=((x(2)*f(x(1))-x(1)*f(x(2)))./(f(x(1))-f(x(2))));
+    ex4_recursive(false);
+end
+```
+
+</details>
+
+<details>
+<summary>iterative</summary>
+
+```matlab
+function ex4()
+    format longg;
+    %choice=randi(2);%randomly choose one 
+    %if choice==1
+        ex4_iterative();
+    %else
+    %    ex4_recursive(true);
+    %end
+end
+function ex4_iterative()
+    i=3;
+    f=input('');
+    x=double(input(''));
+    precision=input('');
+    while true
+        x(i)=(x(i-2)*f(x(i-1))-x(i-1)*f(x(i-2)))./(f(x(i-1))-f(x(i-2)));
+        if abs(x(i)-x(i-1))<power(10,-(precision+2))
+            disp (round((x(i))*power(10,precision))/power(10,precision));
+            return;
+        end
+        i=i+1;
+    end
+end
+function ex4_recursive(flag)
+    persistent f precision x; %use persistent var to save memory
+    if flag == true
+        f=input('');
+        x=double(input(''));
+        precision=input('');
+    end
+    if (abs(x(1)-x(2))<power(10,-(precision+2)))
+        disp (round((x(1))*power(10,precision))./power(10,precision));
+        return;
+    end
+    x(1)=((x(1)*f(x(2))-x(2)*f(x(1)))./(f(x(2))-f(x(1))));
+     if (abs(x(1)-x(2))<power(10,-(precision+2)))
+        disp (round((x(1))*power(10,precision))./power(10,precision));
+        return;
+    end
+    x(2)=((x(2)*f(x(1))-x(1)*f(x(2)))./(f(x(1))-f(x(2))));
+    ex4_recursive(false);
+end
+```
+
+</details>
+
+<details>
+<summary>recursive</summary>
+
+```matlab
+function ex4()
+    format longg;
+    %choice=randi(2);%randomly choose one 
+    %if choice==1
+    %    ex4_iterative();
+    %else
+        ex4_recursive(true);
+    %end
+end
+function ex4_iterative()
+    i=3;
+    f=input('');
+    x=double(input(''));
+    precision=input('');
+    while true
+        x(i)=(x(i-2)*f(x(i-1))-x(i-1)*f(x(i-2)))./(f(x(i-1))-f(x(i-2)));
+        if abs(x(i)-x(i-1))<power(10,-(precision+2))
+            disp (round((x(i))*power(10,precision))/power(10,precision));
+            return;
+        end
+        i=i+1;
+    end
+end
+function ex4_recursive(flag)
+    persistent f precision x; %use persistent var to save memory
+    if flag == true
+        f=input('');
+        x=double(input(''));
+        precision=input('');
+    end
+    if (abs(x(1)-x(2))<power(10,-(precision+2)))
+        disp (round((x(1))*power(10,precision))./power(10,precision));
+        return;
+    end
+    x(1)=((x(1)*f(x(2))-x(2)*f(x(1)))./(f(x(2))-f(x(1))));
+     if (abs(x(1)-x(2))<power(10,-(precision+2)))
+        disp (round((x(1))*power(10,precision))./power(10,precision));
+        return;
+    end
+    x(2)=((x(2)*f(x(1))-x(1)*f(x(2)))./(f(x(1))-f(x(2))));
+    ex4_recursive(false);
+end
+```
+
+</details>
+
+## ex5
+**[OJ score: 100/100](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5f7615a791df0600061c50d3)**
+
+### function
+- ex5: calculate power and enumerate ans
+- check: check whether is ans
+
+### code
+<details>
+<summary>click me</summary>
+
+```matlab
+function ex5()
+    n=input('');
+    flag=false;
+    for j=1:10
+        for i=1:10
+            P(i,j)=power(i-1,j);
+        end
+    end
+    while true
+        [flag]=check(n,P);
+        if flag==true 
+            return;
+        end
+        n=n+1;
+    end
+end
+function [flag]=check(x,P)
+    temp=x;
+    i=0;
+    while (temp>0)
+        i=i+1;
+        A(i)=mod(temp,10);
+        temp=fix(temp/10);
+    end
+    l=i;
+    sum=0;
+    flag=false;
+    for i=1:l
+        sum=sum+P(A(i)+1,l);
+        if sum>x
+            return;
+        end
+    end
+    if sum==x
+        disp(x);
+        flag=true;
+        return;
+    end
+end
+```
+
+</details>
+
+## ex6
+[**OJ score: 100/100**](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5f7621a791df0600061c50e5)
+
+### function
+- ex6: check the corresponding day of the week
+### code
+<details>
+<summary>click me</summary>
+
+```matlab
+function ex6()
+    date=input('');
+    d=date(1);
+    m=date(2);
+    y=date(3);
+    if m<=2 
+        y=y-1;
+    end
+    m=mod(m+10,12);
+    if (m==0) 
+        m=12;
+    end
+    c=fix(y/100);
+    y=mod(y,100);
+    week=1+mod((d+fix((13*m-1)/5)+y+fix(y/4)+fix(c/4)-2*c),7);
+    switch week
+        case 1
+            disp('Sunday');
+        case 2
+            disp('Monday');
+        case 3
+            disp('Tuesday');
+        case 4
+            disp('Wednesday');
+        case 5
+            disp('Thursday');
+        case 6
+            disp('Friday');
+        case 7
+            disp('Saturday');
+    end
+end
+```
+</details>
