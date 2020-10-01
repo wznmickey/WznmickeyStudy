@@ -6,6 +6,7 @@ function ex1()
         for i=1:l
             if year(i)<'0' || year(i)>'9'
                 flag=false;
+                break;
             end
         end
         if (flag==true && str2num(year)>=1598)  

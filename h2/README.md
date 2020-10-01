@@ -11,15 +11,16 @@
 ```matlab
 function ex1()
     while true    
-        year=input('Please input one year:','s');
+        year=input('Please input one year (Since 1598):','s');%Gregorian calendar was not used before 1598
         l=strlength(year);
         flag=true;
         for i=1:l
             if year(i)<'0' || year(i)>'9'
                 flag=false;
+                break;
             end
         end
-        if flag==true 
+        if (flag==true && str2num(year)>=1598)  
             check(str2num(year));
             return;
         end
