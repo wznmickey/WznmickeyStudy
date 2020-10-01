@@ -92,7 +92,7 @@ function draw_crossroad(w)
 end
 function draw_light(x,y,w,an1,an2)
     w=w/2;
-    color=["r","y","g"];
+    color=["r","#ffa500","g"];
     clearpoints(an1);
     an1 = animatedline('Color',color(x.light.status),'LineStyle','none','Marker','o','MarkerSize',15,'MarkerFaceColor',color(x.light.status));
     addpoints(an1,w,w);
