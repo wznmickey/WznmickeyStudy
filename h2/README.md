@@ -226,7 +226,7 @@ end
 
 </details>
 
-### feather
+### feature
 - allow negative number
 - allow number with decimal
 
