@@ -1,9 +1,11 @@
 # Project 1
-## First commit in 2020-10-01
+
 ### How to use
+
 **RUN main.m**
 
 You will be asked to input several numbers,after that one crossroad will appear with lights.
+
 ### Features
  - change the color based on the iuput
  - assign cars into 4 lines (Not yet printed)
