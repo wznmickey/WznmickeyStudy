@@ -1,5 +1,18 @@
 # Changelog
-## [0.1.1] -2020-10-01
+
+## [0.2.0] - 2020-10-06
+### Added
+- draw car
+- assign car plates
+- show FPS
+
+### Changde
+- ways to draw (from 1 fps to float fps)
+  
+### Removed
+- None.
+
+## [0.1.1] - 2020-10-01
 ### Added
 - check whether inputs will lead to accident (partly)
 ### Changed
