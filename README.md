@@ -8,7 +8,7 @@ You will be asked to input several numbers,after that one crossroad will appear 
 
 ### Features
  - change the color based on the iuput
- - assign cars into 4 lines (Not yet printed)
+ - assign cars into 4 lines
  - print the crossroad
  - check whether inputs will lead to accident (partly)
  - draw cars
