@@ -20,21 +20,21 @@ You can see the answer in "ex4_output.txt".
 
 - Input: f(x), [a,b]
 - Output: r
-1. Left=a;
-2. Right=b;
-3. Mid=(Left+Right)/2;
+1. Left←a;
+2. Right←b;
+3. Mid←(Left+Right)/2;
 4. if (Right-Left)<0.0001 % to avoid potential problems with round(), use 0.0001 rather than 0.001
-   1. r=Mid;
+   1. r←Mid;
    2. return r;
 5. if f(Left)f(Mid)<0 
-   1. Right=Mid;
+   1. Right←Mid;
    2. go to 3;
 6. if f(Mid)f(Right)<0 
-   1. Left=Mid;
+   1. Left←Mid;
    2. go to 3;
-7. if f(Left)==0 r=Left;
-8. if f(Mid)==0 r=Mid; 
-9.  if f(Right)==0 r=Right;
+7. if f(Left)==0 r←Left;
+8. if f(Mid)==0 r←Mid; 
+9.  if f(Right)==0 r←Right;
 10. return r;
 
 ## ex6
