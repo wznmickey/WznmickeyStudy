@@ -1,7 +1,42 @@
 function f_p1()
     disp("HELLO! Let's start.");
-    [n,w,p,car,car_list]=init_car();
-    [g,o,r]=init_light();
+    temp_ans=input("INPUT 1 TO DIY \nINPUT 2 TO CHOOSE DIFFICULTY LEVEL \n");
+    if temp_ans==1 
+        [n,w,p,car,car_list]=init_car();
+        [g,o,r]=init_light();
+    else
+        temp_ans=input("INPUT LEVEL FORM 1 TO 10 \n (1 IS ALMOST IMPOSSIBLE TO LOSE; 10 IS ALMOST IMPOSSIBLE TO WIN):");
+        n=temp_ans*10;
+        w=10+temp_ans;
+        switch temp_ans
+            case 1
+                p=0.00;
+            case 2
+                p=0.01;
+            case 3
+                p=0.05;
+            case 4
+                p=0.10;
+            case 5
+                p=0.20;
+            case 6
+                p=0.30;
+            case 7
+                p=0.50;
+            case 8
+                p=0.90;
+            case 9
+                p=0.99;
+            case 10
+                p=1.00;
+        end
+        [car]=assign(n);
+        car_list=get_car_info(car,w,p);
+        car_list=get_car_name(car_list,n);
+        g=temp_ans*2;
+        o=5-floor(temp_ans/2);
+        r=g+o;
+    end     
     go(r,o,g,w,p,n,car,car_list);
 end
 function [car]=assign(n)
@@ -20,7 +55,7 @@ function [car]=assign(n)
 end
 function [n,w,p,car,car_list]=init_car()
     stfn='What is the total number of cars ? \n (int, from 1 to 100) \n input:';
-    stfw='What is the width of the road ? \n (int, meters from 10 to 20, \n 1 unit=10 meters \n car speed : 10 m/s = 1 unit/s) \n input:';
+    stfw='What is the width of the road ? \n (int, meters from 11 to 20, \n 1 unit=10 meters \n car speed : 10 m/s = 1 unit/s) \n input:';
     stfp='What is the probability that a cars does \n not stop at the red light ? \n (real number, from 0.0 to 1.0) \n input:';
     n=input(stfn);
     w=input(stfw);
@@ -51,41 +86,44 @@ function car_list=get_car_info(car,w,p)
                 car_list(num).ignore=false;
                 car_list(num).really_ignore=false;
             end
-            %car length=6m
-            %car width =4m
+            %car length = 4-8m
+            %car width  = 4m
+            car_list(num).length_car=randi(5)+3;
+            car_list(num).half_length=car_list(num).length_car./2;
+            car_list(num).color=[randi(2)-1,randi(2)-1,randi(2)-1];
             if j==1
                 if i==1 
-                    car_list(num).x=-w/2-3;
+                    car_list(num).x=-w/2-car_list(num).half_length;
                     car_list(num).y=-w/2+3;
                 end
                 if i==2
-                    car_list(num).x=w/2+3;
+                    car_list(num).x=w/2+car_list(num).half_length;
                     car_list(num).y=w/2-3;
                 end
                 if i==3
                     car_list(num).x=-w/2+3;
-                    car_list(num).y=w/2+3;
+                    car_list(num).y=w/2+car_list(num).half_length;
                 end
                 if i==4
                     car_list(num).x=w/2-3;
-                    car_list(num).y=-w/2-3;
+                    car_list(num).y=-w/2-car_list(num).half_length;
                 end
             else
                 if i==1 
-                    car_list(num).x=car_list(num-1).x-6-2;
+                    car_list(num).x=car_list(num-1).x-6-car_list(num).half_length;
                     car_list(num).y=-w/2+3;
                 end
                 if i==2
-                    car_list(num).x=car_list(num-1).x+6+2;
+                    car_list(num).x=car_list(num-1).x+6+car_list(num).half_length;
                     car_list(num).y=w/2-3;
                 end
                 if i==3
                     car_list(num).x=-w/2+3;
-                    car_list(num).y=car_list(num-1).y+6+2;
+                    car_list(num).y=car_list(num-1).y+6+car_list(num).half_length;
                 end
                 if i==4
                     car_list(num).x=w/2-3;
-                    car_list(num).y=car_list(num-1).y-6-2;
+                    car_list(num).y=car_list(num-1).y-6-car_list(num).half_length;
                 end
             end
         end
@@ -196,16 +234,14 @@ function draw_light(x,y,w,an1,an2,time)
         end
     hold off;
 end
-function [car_list,run_flag,draw_flag]=draw_car(x,y,w,runtime,n,car,car_list,o)
-    run_flag=true;
-    draw_flag=false;
+function [car_list]=check_stop(o,runtime,x,car_start,car_end,car_list)
     if (((o==0||runtime.before==0) && x.light.status==1 && x.light.change==true) || (x.light.status==2 && x.light.change==true))
-        for i=1:car(1).num+car(2).num
+        for i=car_start:car_end
             if (car_list(i).ignore==true && car_list(i).first==true)
                 car_list(i).run=true;
                 car_list(i).really_ignore=true;
                 disp(append("NOT STOP: ",car_list(i).name));
-                if (i+1<=n && car_list(i+1).line==car_list(i).line)
+                if (i+1<=car_end && car_list(i+1).line==car_list(i).line)
                     car_list(i+1).first=true;
                     car_list(i).first=false;
                 end
@@ -215,54 +251,40 @@ function [car_list,run_flag,draw_flag]=draw_car(x,y,w,runtime,n,car,car_list,o)
         end
     end
     if (x.light.status==3 && x.light.change==true)
-        for i=1:car(1).num+car(2).num
+        for i=car_start:car_end
             car_list(i).run=true;
         end
     end
-    if (((o==0||runtime.before==0) && y.light.status==1 && y.light.change==true) || (y.light.status==2 && y.light.change==true))
-        for i=car(1).num+car(2).num+1:n
-            if (car_list(i).ignore==true && car_list(i).first==true)
-                car_list(i).run=true;
-                car_list(i).really_ignore=true;
-                disp(append("NOT STOP: ",car_list(i).name));
-                if (i+1<=n && car_list(i+1).line==car_list(i).line)
-                    car_list(i+1).first=true;
-                    car_list(i).first=false;
-                end
-            else
-                car_list(i).run=false;
-            end
-        end
-    end
-    if (y.light.status==3 && y.light.change==true)
-        for i=car(1).num+car(2).num+1:n
-            car_list(i).run=true;
-        end
-    end
+end
+function [car_list,run_flag,draw_flag]=draw_car(x,y,w,runtime,n,car,car_list,o)
+    run_flag=true;
+    draw_flag=false;
+    [car_list]=check_stop(o,runtime,x,1,car(1).num+car(2).num,car_list);
+    [car_list]=check_stop(o,runtime,y,car(1).num+car(2).num+1,n,car_list);
     % car will run after passing light even orange light
     for i=1:n
-        if (car_list(i).line==1 && car_list(i).x>-w/2-3)
+        if (car_list(i).line==1 && car_list(i).x>-w/2-car_list(i).half_length)
             car_list(i).run=true;
             if (i+1<=n && car_list(i+1).line==car_list(i).line)
                 car_list(i+1).first=true;
                 car_list(i).first=false;
             end
         end
-        if (car_list(i).line==2 && car_list(i).x<w/2+3)
+        if (car_list(i).line==2 && car_list(i).x<w/2+car_list(i).half_length)
             car_list(i).run=true;
             if (i+1<=n && car_list(i+1).line==car_list(i).line)
                 car_list(i+1).first=true;
                 car_list(i).first=false;
             end
         end
-        if (car_list(i).line==3 && car_list(i).y<w/2+3)
+        if (car_list(i).line==3 && car_list(i).y<w/2+car_list(i).half_length)
             car_list(i).run=true;
             if (i+1<=n && car_list(i+1).line==car_list(i).line)
                 car_list(i+1).first=true;
                 car_list(i).first=false;
             end
         end
-        if (car_list(i).line==4 && car_list(i).y>-w/2-3)
+        if (car_list(i).line==4 && car_list(i).y>-w/2-car_list(i).half_length)
             car_list(i).run=true;
             if (i+1<=n && car_list(i+1).line==car_list(i).line)
                 car_list(i+1).first=true;
@@ -288,21 +310,21 @@ function [car_list,run_flag,draw_flag]=draw_car(x,y,w,runtime,n,car,car_list,o)
         if (abs(car_list(i).x)<=50 && abs(car_list(i).y)<=50 && car_list(i).isdraw==false)
             hold on;
             if (car_list(i).line<=2)
-                car_list(i).draw=rectangle('Position',[car_list(i).x-3 car_list(i).y-2 6 4],'FaceColor','r');
+                car_list(i).draw=rectangle('Position',[car_list(i).x-car_list(i).half_length car_list(i).y-2 car_list(i).length_car 4],'FaceColor',car_list(i).color);
             end
             if (car_list(i).line>=3)
-                car_list(i).draw=rectangle('Position',[car_list(i).x-2 car_list(i).y-3 4 6],'FaceColor','r');
+                car_list(i).draw=rectangle('Position',[car_list(i).x-2 car_list(i).y-car_list(i).half_length 4 car_list(i).length_car],'FaceColor',car_list(i).color);
             end
             car_list(i).isdraw=true;
             hold off;
             draw_flag=true;
         else
             if (car_list(i).line<=2 && abs(car_list(i).x)<=50)
-                car_list(i).draw.Position=[car_list(i).x-3 car_list(i).y-2 6 4];
+                car_list(i).draw.Position=[car_list(i).x-car_list(i).half_length car_list(i).y-2 car_list(i).length_car 4];
                 draw_flag=true;
             end
             if (car_list(i).line>=3 && abs(car_list(i).y)<=50)
-                car_list(i).draw.Position=[car_list(i).x-2 car_list(i).y-3 4 6];
+                car_list(i).draw.Position=[car_list(i).x-2 car_list(i).y-car_list(i).half_length 4 car_list(i).length_car];
                 draw_flag=true;
             end
         end
@@ -330,7 +352,7 @@ function[run_flag]=checkcrash(car_list,n,w)
     end
     for i=1:l_risk_car1
         for j=1:l_risk_car2
-            if (abs(risk_car1(1,i).x-risk_car2(1,j).x)<=5 && abs(risk_car1(1,i).y-risk_car2(1,j).y)<=5)
+            if (abs(risk_car1(1,i).x-risk_car2(1,j).x)<=risk_car1(1,i).half_length+2 && abs(risk_car1(1,i).y-risk_car2(1,j).y)<=risk_car2(1,j).half_length+2)
                 run_flag=false;
                 return;
             end
