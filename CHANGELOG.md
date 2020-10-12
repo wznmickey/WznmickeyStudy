@@ -1,13 +1,27 @@
 # Changelog
 
+## [1.0.0] - 2020-10-13
+### Added
+- whole animation
+- difficulty level
+- cars with various size and color
+- find the result of the game
+  
+### Changed
+- Speed up the way to get cars' plates
+- limit of several input
+
+### Removed
+- None.
+
 ## [0.2.0] - 2020-10-06
 ### Added
 - draw car
 - assign car plates
 - show FPS
 
-### Changde
-- ways to draw (from 1 fps to float fps)
+### Changed
+- ways to draw (from 1 fps to flexible fps)
   
 ### Removed
 - None.
