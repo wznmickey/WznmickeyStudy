@@ -15,13 +15,13 @@ function [B]=generate_permutations_adjusted(A,l,num)%A is the set and l is the l
         %get num random number
         % reference: The Art of Computer Programming Vol 2: Seminumercial
         % Algorithms
-        temp_A=1:power(temp_l,l);
-        for j=1:power(temp_l,l)
-            k=floor(j*rand)+1;
-            temp_A(j)=temp_A(k);
-            temp_A(k)=j;
+        temp_max=power(temp_l,l);
+        temp_A=1:temp_max;
+        for j=1:num
+            k=randi(temp_max-j+1)+j-1;
+            [temp_A(k),temp_A(j)]=swap(temp_A(k),temp_A(j));
         end
-        temp_A([num+1:power(temp_l,l)])=[];
+        temp_A([num+1:temp_max])=[];
         temp_A=floor((temp_A-1)./power(temp_l,l-1))+1;
         temp_B=zeros(temp_l,1);
         for i=1:num
