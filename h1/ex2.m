@@ -3,8 +3,8 @@
 [x,y]=Ex2_step3(x,y);
 [x,y]=Ex2_step4(x,y);
 [x,y,z]=Ex2_step5(x,y);
-[x,y,z,w]=Ex2_step6(x,y,z);
-Ex2_step7(x,y,z,w);
+[x,y,z,w]=Ex2_step6(z);
+[x,y]=Ex2_step7(x,y,w);
 function [x,y]=Ex2_init()
     x=[3;2;6;8];
     y=[4;1;3;5];
@@ -40,13 +40,13 @@ function [x,y,z]=Ex2_step5(x,y)
     disp(z);
     [x,y]=Ex2_init();
 end
-function [x,y,z,w]=Ex2_step6(x,y,z)
+function [x,y,z,w]=Ex2_step6(z)
     w=sum(z);
     disp(z);
     disp(w);
     [x,y]=Ex2_init();% Because specifications 2, even there is no chagnge of x and y, there still be a reset.
 end
-function Ex2_step7(x,y,z,w)
+function [x,y]=Ex2_step7(x,y,w)
     disp(x);
     disp(y);
     disp(w);

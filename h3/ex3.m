@@ -22,6 +22,6 @@ function ex3()
    fprintf(ans2);
    fprintf('\n');
    Good.age=(datetime(2020,10,01)-Goods.Bought);
-   ans3=fix(mean(years(Good.age)));
+   ans3=fix(sum(years(Goods.age).*Goods.Quantity)./sum(Goods.Quantity));
    disp(ans3);
 end

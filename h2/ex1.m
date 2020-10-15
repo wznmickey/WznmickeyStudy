@@ -1,6 +1,6 @@
 function ex1()
     while true    
-        year=input('Please input one year (Since 1598):','s');%Gregorian calendar was not used before 1598
+        year=input('Please input one year (Since 1582):','s');%Gregorian calendar was not used before 1582
         l=strlength(year);
         flag=true;
         for i=1:l
@@ -9,7 +9,7 @@ function ex1()
                 break;
             end
         end
-        if (flag==true && str2num(year)>=1598)  
+        if (flag==true && str2num(year)>=1582)  
             check(str2num(year));
             return;
         end
