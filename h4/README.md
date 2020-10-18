@@ -20,3 +20,7 @@
 ## ex3.c
 
 [JOJ 100/100](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5f8894f9229b1b0006f11ec5)
+
+## ex4.c
+
+NO JOJ SCORE.
