@@ -1,27 +1,9 @@
-#include<stdio.h>
-#include<math.h>
-#include<stdlib.h>
-void call_f1();
-void call_f2();
-int main()
-{
-	short get_ans=0;
-	char ans;
-	while (get_ans==0) 
-	{ 
-		printf("NOW YOU HAVE 2 CHOICE:\n1.check whether the given letter is a vowel or a consonant\n2.find data types stored in given size\n(1/2)");
-		get_ans=scanf("%c",&ans);
-	} 
-	
-	if (ans=='1') call_f1();
-	if (ans=='2') call_f2(); 
-	return 0;
-}
+#include "assignment.h"
 void call_f1()
 {
 	printf("YOU CHOOSE ONE.\n");
 	printf("PLEASE INPUT A LETTER.");
-	char ans=NULL;
+	char ans;
 	short get_ans=0;
 	while (get_ans==0||ans=='\n') get_ans=scanf("%c",&ans);
 	if (get_ans!=0)
@@ -54,3 +36,22 @@ void call_f2()
 	}
 	return;
 }
+void ex4() {
+    short get_ans=0;
+	char ans;
+	while (get_ans==0) 
+	{ 
+		printf("NOW YOU HAVE 2 CHOICE:\n1.check whether the given letter is a vowel or a consonant\n2.find data types stored in given size\n(1/2)");
+		get_ans=scanf("%c",&ans);
+	} 
+	
+	if (ans=='1') call_f1();
+	if (ans=='2') call_f2(); 
+	return;
+}
+#ifdef JOJ
+int main(){
+    ex4();
+    return 0;
+}
+#endif

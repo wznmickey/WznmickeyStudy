@@ -1,19 +1,44 @@
-#include<stdio.h> 
-#include<stdlib.h>
-#include<string.h> 
+#include "assignment.h"
 struct ComplexNum
 {
 	long long a,b;
 };
-void clear(char *number,int *num);
-struct ComplexNum plus(struct ComplexNum num1,struct ComplexNum num2);
-struct ComplexNum times(struct ComplexNum num1,struct ComplexNum num2);
-void print(struct ComplexNum ans);
-int main()
+struct ComplexNum plus(struct ComplexNum num1,struct ComplexNum num2)
 {
-	char temp;
+	struct ComplexNum ans;
+	ans.a=num1.a+num2.a;
+	ans.b=num1.b+num2.b;
+	return ans;
+}
+struct ComplexNum times(struct ComplexNum num1,struct ComplexNum num2)
+{
+	struct ComplexNum ans;
+	ans.a=num1.a*num2.a-num1.b*num2.b;
+	ans.b=num1.b*num2.a+num1.a*num2.b;
+	return ans;
+}
+void print(struct ComplexNum ans)
+{
+	printf("%lld",ans.a);
+	if (ans.b>=0) printf("+");
+	printf("%lldi",ans.b);
+	return;
+}
+struct ComplexNum init()
+{
+	struct ComplexNum ans;
+	ans.a=0;
+	ans.b=0;
+	return ans;
+}
+void ex1() {
+    char temp;
 	char number[1000];
 	struct ComplexNum complex[10];
+	for (int i=0;i<=9;i++)
+	{
+		complex[i]=init();
+	}
 	struct ComplexNum ans;
 	int now_index=0;
 	int complex_num=0;
@@ -25,7 +50,6 @@ int main()
 			{
 				number[now_index]=temp;
 				now_index++;
-				
 			}
 			if (temp=='+' || temp=='-')
 			{
@@ -56,35 +80,20 @@ int main()
 			if (temp=='+') 
 			{
 				ans=plus(complex[0],complex[1]);print(ans);
-				return 0;
+				return;
 			}
 			if (temp=='*') 
 			{
 				ans=times(complex[0],complex[1]);print(ans);
-				return 0;
+				return;
 			}	
 		}	
 	}
-	return 0;
-}
-struct ComplexNum plus(struct ComplexNum num1,struct ComplexNum num2)
-{
-	struct ComplexNum ans;
-	ans.a=num1.a+num2.a;
-	ans.b=num1.b+num2.b;
-	return ans;
-}
-struct ComplexNum times(struct ComplexNum num1,struct ComplexNum num2)
-{
-	struct ComplexNum ans;
-	ans.a=num1.a*num2.a-num1.b*num2.b;
-	ans.b=num1.b*num2.a+num1.a*num2.b;
-	return ans;
-}
-void print(struct ComplexNum ans)
-{
-	printf("%lld",ans.a);
-	if (ans.b>=0) printf("+");
-	printf("%lldi",ans.b);
 	return;
 }
+#ifdef JOJ
+int main(){
+    ex1();
+    return 0;
+}
+#endif

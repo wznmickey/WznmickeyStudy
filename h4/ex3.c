@@ -1,14 +1,24 @@
-#include<stdio.h>
-#include<math.h>
-void check1(double a,double b);
-void check2(double a,double b,double c);
-int main()
+#include "assignment.h"
+void check1(double a,double b)
 {
-	double a,b,c;
-	short get_num;
-	get_num=scanf("%lf%lf%lf",&a,&b,&c);
-	if (get_num!=0) check2(a,b,c);
-	return 0;
+	if (fabs(a)<=0.000001)
+	{
+		if (fabs(b)<=0.000001)
+		{
+			printf("ALL");
+		}
+		else
+		{
+			printf("NONE");
+		}
+	}
+	else 
+	{
+		double ans;
+		ans=-b/a;
+		printf("%.5lf",ans);
+	}
+	return;
 }
 void check2(double a,double b,double c)
 {
@@ -39,24 +49,17 @@ void check2(double a,double b,double c)
 	}
 	return;
 }
-void check1(double a,double b)
-{
-	if (fabs(a)<=0.000001)
-	{
-		if (fabs(b)<=0.000001)
-		{
-			printf("ALL");
-		}
-		else
-		{
-			printf("NONE");
-		}
-	}
-	else 
-	{
-		double ans;
-		ans=-b/a;
-		printf("%.5lf",ans);
-	}
+void ex3() {
+	double a,b,c;
+	short get_num;
+	get_num=scanf("%lf%lf%lf",&a,&b,&c);
+	if (get_num!=0) check2(a,b,c);
 	return;
 }
+#ifdef JOJ
+int main(){
+    ex3();
+    return 0;
+}
+#endif
+
