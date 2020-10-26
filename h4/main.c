@@ -1,5 +1,6 @@
 #include "assignment.h"
-int main(int argc, char* argv[]) {
+int main(int argc, char* argv[]) 
+{
     int ex = getExerciseNumber(argc, argv);
     switch (ex){
         case 1 :
@@ -23,7 +24,8 @@ int main(int argc, char* argv[]) {
     }
 }
 
-int getExerciseNumber(int argc, char* argv[]){
+int getExerciseNumber(int argc, char* argv[])
+{
     if(argc <= 0 || argc > 2) {
         fprintf(stderr, "Illegal Usage");
         exit(-2);
@@ -52,5 +54,5 @@ int getExerciseNumber(int argc, char* argv[]){
             fprintf(stderr, "Illegal input, try again\n");
         }
     }
-		return 0;
+	return 0;
 }

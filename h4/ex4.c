@@ -36,7 +36,8 @@ void call_f2()
 	}
 	return;
 }
-void ex4() {
+void ex4() 
+{
     short get_ans=0;
 	char ans;
 	while (get_ans==0) 
@@ -50,7 +51,8 @@ void ex4() {
 	return;
 }
 #ifdef JOJ
-int main(){
+int main()
+{
     ex4();
     return 0;
 }

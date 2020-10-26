@@ -1,8 +1,4 @@
 #include "assignment.h"
-struct ComplexNum
-{
-	long long a,b;
-};
 struct ComplexNum plus(struct ComplexNum num1,struct ComplexNum num2)
 {
 	struct ComplexNum ans;
@@ -31,15 +27,17 @@ struct ComplexNum init()
 	ans.b=0;
 	return ans;
 }
-void ex1() {
-    char temp;
-	char number[1000];
-	struct ComplexNum complex[10];
-	for (int i=0;i<=9;i++)
+void ex1() 
+{
+	char temp;
+	char number[1050];
+	struct ComplexNum complex[15];
+	struct ComplexNum ans;
+	int i=0;
+	for (i=0;i<=9;i++)
 	{
 		complex[i]=init();
 	}
-	struct ComplexNum ans;
 	int now_index=0;
 	int complex_num=0;
 	while (scanf("%c",&temp))
@@ -60,8 +58,8 @@ void ex1() {
 				}
 				else 
 				{
-					complex[complex_num].a=atof(number);				
-					memset(number,'\0',sizeof(number));
+					complex[complex_num].a=atol(number);			
+					memset(number,'\0',1000);
 					now_index=0;
 					number[now_index]=temp;
 					now_index++;
@@ -69,8 +67,8 @@ void ex1() {
 			}
 			if (temp=='i')
 			{
-				complex[complex_num].b=atof(number);
-				memset(number,'\0',sizeof(number));
+				complex[complex_num].b=atol(number);
+				memset(number,'\0',1000);
 				now_index=0;
 				complex_num++;
 			}
@@ -79,12 +77,14 @@ void ex1() {
 		{
 			if (temp=='+') 
 			{
-				ans=plus(complex[0],complex[1]);print(ans);
+				ans=plus(complex[0],complex[1]);
+				print(ans);
 				return;
 			}
 			if (temp=='*') 
 			{
-				ans=times(complex[0],complex[1]);print(ans);
+				ans=times(complex[0],complex[1]);
+				print(ans);
 				return;
 			}	
 		}	
@@ -92,7 +92,8 @@ void ex1() {
 	return;
 }
 #ifdef JOJ
-int main(){
+int main()
+{
     ex1();
     return 0;
 }

@@ -49,7 +49,8 @@ void check2(double a,double b,double c)
 	}
 	return;
 }
-void ex3() {
+void ex3() 
+{
 	double a,b,c;
 	short get_num;
 	get_num=scanf("%lf%lf%lf",&a,&b,&c);
@@ -57,7 +58,8 @@ void ex3() {
 	return;
 }
 #ifdef JOJ
-int main(){
+int main()
+{
     ex3();
     return 0;
 }

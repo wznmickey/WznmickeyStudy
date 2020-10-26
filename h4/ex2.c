@@ -12,7 +12,8 @@ long long gcd(long long a,long long b)
 	if (a!=b) return gcd(a-b,b);
 	else return a;
 }
-void ex2() {
+void ex2() 
+{
     long long a,b;
 	short get_ans;
 	get_ans=scanf("%lld%lld",&a,&b);
@@ -20,7 +21,8 @@ void ex2() {
 	return;
 }
 #ifdef JOJ
-int main(){
+int main()
+{
     ex2();
     return 0;
 }
