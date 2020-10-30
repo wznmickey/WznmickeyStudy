@@ -1,8 +1,8 @@
 //
 // Created by patri on 2016/6/18.
 //
-#ifndef CTEMPLATE_ASSIGNMENT_H
-#define CTEMPLATE_ASSIGNMENT_H
+#ifndef H4
+#define H4
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,11 +22,6 @@ void check1(double a,double b);
 void check2(double a,double b,double c);
 void call_f1();
 void call_f2();
-long int mpow (int a, int b);
-int quo (int a, int b) ;
-int sum (int a, int b) ;
-int prod (int a, int b);
-int rem (int a, int b);
 int getExerciseNumber(int argc, char* argv[]);
 /* This function gets the exercise number to run from
  * 1. programe argument (for graders)

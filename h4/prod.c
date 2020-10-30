@@ -1,3 +1,4 @@
+#include "prod.h"
 #include "assignment.h"
 int prod (int a, int b) 
 { 

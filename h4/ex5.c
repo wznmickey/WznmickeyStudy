@@ -1,4 +1,8 @@
 #include "assignment.h"
+#include "exp.h"
+#include "prod.h"
+#include "quorem.h"
+#include "sum.h"
 void ex5()
 {
     int a, b;
