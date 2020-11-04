@@ -44,13 +44,15 @@ void disp( scard card [] )
 void wait_player( char name [], char key )
 {
     int c;
-    printf( "\033[0;33mASK INPUT]PLEASE PRESS %s TO CONTINUE", name );
+    if ( OS == 0 ) printf( "\033[0;33m" );
+    printf( "[ASK INPUT]PLEASE PRESS %s TO CONTINUE", name );
     while ( ( c = fgetc( stdin ) ) != EOF )
     {
         if ( c == key )
         {
-            printf( "\033[0;32m[RECEIVE INPUT]YOU HAVE PRESSED %s", name );
-            printf("\033[0m"); 
+            if ( OS == 0 ) printf( "\033[0;32m" );
+            printf( "[RECEIVE INPUT]YOU HAVE PRESSED %s\n", name );
+            if ( OS == 0 ) printf( "\033[0m" );
             return;
         }
     }
@@ -58,10 +60,9 @@ void wait_player( char name [], char key )
 }
 void shuffle( scard *first, scard *last )
 {
-    for ( scard *i = last - 1; i >= first; i-- )
+    for ( scard *i = first; i <last; i++ )
     {
-        int temp = rand( ) % ( ( i - first ) / sizeof( scard ) + 1 );
-        swap_scard( i, first + temp );
+        swap_scard( i, rand( ) % ( ( last - i )) + i );
     }
     return;
 }
@@ -76,15 +77,14 @@ int compare_scard( const void *a, const void *b )
 {
     scard arg1 = *( const scard * ) a;
     scard arg2 = *( const scard * ) b;
-
     if ( arg1.suit * 13 + arg1.rank < arg2.suit * 13 + arg2.rank ) return -1;
     if ( arg1.suit * 13 + arg1.rank > arg2.suit * 13 + arg2.rank ) return 1;
     return 0;
 }
-//#ifdef JOJ
+#ifdef JOJ
 int main( )
 {
     ex5( );
     return 0;
 }
-//#endif
+#endif

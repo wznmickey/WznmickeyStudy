@@ -1,0 +1,55 @@
+# homework 5
+
+## ex1
+
+[150/150](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5fa2b8f39fedcc000661beb1)
+
+## ex2
+
+[120/120](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5fa2b9389fedcc000661beba)
+
+## ex3
+
+[100/100](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5fa2b96b9fedcc000661bec3)
+
+## ex4
+
+[100/100](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5fa2b9929fedcc000661bec9)
+
+## ex5
+
+NO JOJ HOMEWORK.
+
+## ex6
+
+NO JOJ HOMEWORK.
+
+### Karatsuba 
+
+It is an algotithm which can speed up the production of 2 large number.
+
+Algotithm Karatsuba
+
+- Input: a,b
+- Output: c (satisfy the rule that c==a*b)
+
+1. if (a<b) swap(a,b);// let a>=b
+2. if (b==0) return 0;// * times 0 equal to 0;('*' refers to any number)
+3. m <- length_in_dec(a); // a>b means length_in_dec(a)>=length_in_dec(b)
+4. m <- m/2; (Divisibility) // prepare for dividing
+5. a1 <- the front part of a divided by m; //divide 
+6. a2 <- the last part of a divided by m; //divide 
+7. b1 <- the front part of b divided by m; //divide 
+8. b2 <- the last part of b divided by m; //divide 
+9. x=Karatsuba(a2,b2); //calculate third part
+10. y=Karatsuba(a1+a2,b1+b2); //calculate second part
+11. z=Karatsuba(a1,b1); //calculate first part
+12. return (z × 10 ^ (m × 2)) + ((y - z - x) × 10 ^ m) + x; //final answer
+
+### edit to improve efficiency
+
+change from dec to bin
+ - use bitwise operation
+    1. decrease the time to time third and second part
+    2. decrease the time to calculate the final answer
+    3. merge the operation of times and divivision
