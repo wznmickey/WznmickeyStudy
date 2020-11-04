@@ -9,6 +9,7 @@
 ## feature
  - receive command options and print
  - draw and play cards and change related settings
+ - choose first player
 
 ## License
 MIT

@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0] - 2020-11-04
+### Added
+ - progress the first player
+### Changed
+ - how to define structure
+### Removed
+None.
+
 ## [0.1.0] - 2020-10-28
 ### Added
  - receive command options and print

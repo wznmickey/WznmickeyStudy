@@ -13,9 +13,18 @@ int main( int argc, char *argv [] )
     card_init( unhave->card, unhave->num );
     player_init( player, input_option.n );
 
+    splayer ondesk;
+    ondesk.num_card = 0;
+
     shuffle( unhave->card, unhave->card + unhave->num );
     player_get_card( player, input_option.n, input_option.c, unhave );
-    int first_player = check_first( player, input_option.n, unhave );
+    int   now_player = check_first( player, input_option.n, unhave );
+    scard now_card   = take_card( &ondesk, unhave );
+    printf( "First card:" );
+    disp( &now_card, 1 );
+    printf( "\n" );
+    _Bool win = false;
+    while ( ! win ) { now_player = ( now_player + 1 ) % input_option.n; }
     // disp( unhave->card, unhave->num );
     free( unhave );
     return 0;
@@ -170,7 +179,7 @@ int check_first( splayer player [], int n, sdeck *unhave )
         }
         printf( "\n" );
     }
-    printf( "The game will start with player %d", temp.player + 1 );
+    printf( "The game will start with player %d\n", temp.player + 1 );
     return temp.player;
 }
 void player_init( splayer player [], int n )
