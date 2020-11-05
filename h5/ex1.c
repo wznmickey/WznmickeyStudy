@@ -33,6 +33,7 @@ inline void ex1( )
             ans [ index++ ] = i;
         }
     }
+    free(bitmap);
     if ( true || ans [ 0 ] == 2 ) return;
 }
 #ifdef JOJ
