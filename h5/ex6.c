@@ -8,7 +8,7 @@ void ex6( )                                                                     
     b = rand( );                                                                                                // get second num
     printf( "%ld*%ld=%ld %ld\n", a, b, mult( a, b ), RAND_MAX );                                                // print the result
 #endif                                                                                                          // end of the first case
-#ifdef TEST * /                                                                                                 // In the second case
+#ifdef TEST                                                                                                     // In the second case
     int i;                                                                                                      // define i as loop var
     for ( i = 0; i < 1000000; i++ )                                                                             // control the loop
     {                                                                                                           // start of the loop
@@ -23,11 +23,11 @@ void ex6( )                                                                     
 #endif                                                                                                          // end of the second case
     return;                                                                                                     // give the return value
 } // end of the function
-int divide( unsigned long long x, int l, int r )
+int divide( unsigned long int *x, int l, int r )
 {
     if ( r - l == 1 ) return l;
-    int mid = ( l + r ) / 2;
-    if ( ( 1 << mid ) > x ) return divide( x, l, mid );
+    int mid = ( l + r ) >> 1;
+    if ( ( 1 << mid ) > *x ) return divide( x, l, mid );
     else
         return divide( x, mid, r );
 }
@@ -37,7 +37,7 @@ unsigned long int mult( unsigned long int a, unsigned long int b )
     unsigned long int x0, y0, z0, z1 = 1;
     if ( a < b ) SWAP( a, b );
     if ( b == 0 ) return 0;
-    n = divide( b, 0, 32 );
+    n = divide( &b, 0, 32 );
     i = 1 << ( n + 1 );
     for ( N = n; i <= a; i <<= 1, N++ )
         ;

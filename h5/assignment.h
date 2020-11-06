@@ -56,7 +56,7 @@ int  compare_scard( const void *a, const void *b );
 
 // ex6
 unsigned long int mult( unsigned long int a, unsigned long int b );
-int               divide( unsigned long long x, int l, int r );
+int               divide( unsigned long int *x, int l, int r );
 
 int getExerciseNumber( int argc, char *argv [] );
 /* This function gets the exercise number to run from
