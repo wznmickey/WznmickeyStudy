@@ -33,8 +33,8 @@ inline void ex1( )
             ans [ index++ ] = i;
         }
     }
-    free(bitmap);
-    if ( true || ans [ 0 ] == 2 ) return;
+    free( bitmap );
+    if ( true || ans [ 0 ] == 2 ) return; // avoid warning that ans is not used
 }
 #ifdef JOJ
 int main( )
