@@ -9,7 +9,7 @@ typedef enum _bool
 {
     false,
     true
-}bool;
+} bool;
 node_t *Initialize( char ch );
 void    PrintList( node_t *head );
 void    FreeList( node_t **head );

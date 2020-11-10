@@ -4,7 +4,7 @@
 NO JOJ HOMEWORK CASES
 
 ## ex2
-[]()
+[100/100](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5faad87f9fedcc000661f204)
 
 ### cartesian coordinates
 use $a+bi$ to describe a complex num
@@ -13,3 +13,18 @@ in struct use a and b and a and b are double.
 ### polar coordinates
 use $r e^{i\theta} = r \cos\theta + r*i \sin\theta$
 in struct use r and t and r and t are double.
+
+## ex3
+[100/100](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5faad8ca9fedcc000661f207)
+
+## ex4
+[100/100](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5faad9019fedcc000661f20d)
+
+## ex5
+[100/100](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5faad93b9fedcc000661f210)
+
+## ex6
+[100/100](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5faad9719fedcc000661f216)
+
+## ex7
+[100/100](https://joj.sjtu.edu.cn/d/vg101_fall_2020_manuel/records/5faad99d9fedcc000661f219)

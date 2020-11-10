@@ -2,39 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-int main( )
-{
-    node_t *a = Initialize( '1' );
-    node_t *b = NULL;
-    PrintList( a );
-    InsertFirstList( &a, 'V' );
-    InsertFirstList( &a, 'M' );
-    PrintList( a );
-    InsertLastList( &a, 'C' );
-    PrintList( a );
-    SplitList( &a, &b, 2 );
-    PrintList( a );
-    PrintList( b );
-    DeleteFirstList( &a );
-    PrintList( a );
-    InsertLastList( &a, 'G' );
-    DeleteLastList( &b );
-    PrintList( b );
-    InsertLastList( &b, '0' );
-    PrintList( b );
-    InsertLastList( &b, '1' );
-    PrintList( b );
-    MergeList( &a, &b );
-    PrintList( a );
-    char target = 'G';
-    printf( "Count '%c': %d\n", target, SearchList( &a, target ) );
-    target = '1';
-    printf( "Count '%c': %d\n", target, SearchList( &a, target ) );
-    FreeList( &a );
-    return 0;
-}
-
 node_t *Initialize( char ch )
 {
     node_t *head;
@@ -157,34 +124,52 @@ int SearchList( node_t **head, char target )
 }
 void SplitList( node_t **head, node_t **tail, int pos )
 {
-    // return;
     if ( pos == 0 )
     {
-        tail = head;
-        free( *head );
-        *head = Initialize( ' ' );
+        if ( *tail == NULL ) *tail = Initialize( ' ' );
+        ( *tail )->ch   = ( *head )->ch;
+        ( *tail )->next = ( *head )->next;
+        ( *head )->ch   = ' ';
+        ( *head )->next = NULL;
         return;
     }
     int     ans  = 0;
     node_t *temp = *head;
     if ( temp == NULL ) { return; }
+    if ( pos == 1 )
+    {
+        if ( ( ( temp ) != NULL ) )
+        {
+            ( *tail )  = ( temp->next );
+            temp->next = NULL;
+        }
+        else
+        {
+            *tail = Initialize( ' ' );
+        }
+        return;
+    }
     while ( ( temp->next ) != NULL )
     {
+
         temp = temp->next;
         ans++;
-        // printf("1");
-        if ( ans == pos - 1 ) break;
+        if ( ans == pos - 1 ) { break; }
     }
     if ( ( ( temp ) != NULL ) )
     {
         ( *tail )  = ( temp->next );
         temp->next = NULL;
     }
+    else
+    {
+        *tail = Initialize( ' ' );
+    }
     return;
 }
 void MergeList( node_t **head1, node_t **head2 )
 {
-    // return;
+
     if ( IsEmptyList( *head1 ) == true )
     {
         if ( IsEmptyList( *head2 ) == true )
@@ -192,24 +177,27 @@ void MergeList( node_t **head1, node_t **head2 )
             free( *head2 );
             ( *head1 )->ch   = ' ';
             ( *head1 )->next = NULL;
+            *head2           = NULL;
             return;
         }
         else
         {
             free( *head1 );
             *head1 = *head2;
+            *head2 = NULL;
             return;
         }
     }
     if ( IsEmptyList( *head2 ) == true )
     {
         {
-            free( *head2 );
+            *head2 = NULL;
             return;
         }
     }
     node_t *temp = *head1;
     while ( temp->next != NULL ) { temp = temp->next; }
     temp->next = *head2;
+    *head2     = NULL;
     return;
 }

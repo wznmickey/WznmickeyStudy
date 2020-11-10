@@ -50,7 +50,7 @@ extern void ex1( );
 extern void ex2( );
 extern void ex3( );
 extern void ex4( );
-//extern void ex5( );
+extern void ex5( );
 extern void ex6( );
-//extern void ex7( );
+extern void ex7( );
 #endif // H6
