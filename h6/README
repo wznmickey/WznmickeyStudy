@@ -1,0 +1,15 @@
+# h6
+
+## ex1
+NO JOJ HOMEWORK CASES
+
+## ex2
+[]()
+
+### cartesian coordinates
+use $a+bi$ to describe a complex num
+in struct use a and b and a and b are double.
+
+### polar coordinates
+use $r e^{i\theta} = r \cos\theta + r*i \sin\theta$
+in struct use r and t and r and t are double.
