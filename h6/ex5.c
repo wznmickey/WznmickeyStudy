@@ -1,10 +1,6 @@
 #include "assignment.h"
 #include "universal_set.h"
 // ex. 5 function: disptach work to other functions for exercise 5
-void ex5( )
-{
-    return;
-}
 void newSet( uset **set, int type )
 {
     ( **set ).elem = calloc( INITSETSIZE, ( unsigned long ) type );
