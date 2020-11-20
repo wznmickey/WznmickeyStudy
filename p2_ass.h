@@ -3,6 +3,7 @@
 
 #define true 1
 #define false 0
+#define bool _Bool
 
 #include <getopt.h>
 #include <math.h>
@@ -17,28 +18,29 @@
 #ifdef _WIN32
 #define OS 1
 #endif
-#ifdef TARGET_OS_MAC
+#ifdef __APPLE__
 #define OS 2
 #endif
 
-typedef struct scard
+typedef struct struct_card
 {
     int suit, rank;
 } scard; // s(truct _)card
-typedef struct _player
+typedef struct struct_player
 {
     // int       no;
-    long long score;
-    int       num_card;
-    scard     card [ 10 * 52 + 1 ];
+    int   score;
+    int   num_card;
+    int   last_score;
+    scard card [ 10 * 52 + 1 ];
 } splayer; // s(truct _)player
-typedef struct _options
+typedef struct struct_options
 {
     _Bool auto_run, help;
     int   n, c, d, r;
     char  filename [ FILENAME_MAX + 10 ];
 } options;
-typedef struct _deck
+typedef struct struct_deck
 {
     /*
     -1  -wait to be owned
@@ -49,6 +51,10 @@ typedef struct _deck
     int   num;
     scard card [];
 } sdeck; // s(truct _)deck
+typedef struct struct_effect
+{
+    _Bool get2, get3, reverse, skip;
+} seffect;
 options get_info( int argc, char *argv [] );
 options option_init( );
 void    card_init( scard card [], int d );
@@ -63,4 +69,11 @@ void    player_init( splayer player [], int n );
 scard   take_card( splayer *player, sdeck *unhave );
 int     get_card_no( scard card );
 void    player_get_card( splayer player [], int n, int c, sdeck *unhave );
+_Bool   check_okay( scard x, scard y );
+_Bool   win_check( splayer x [], int n );
+void    s_player_get_card( splayer player [], int n, int c, sdeck *unhave );
+void    card_remove( scard x [], scard ans, int *n );
+_Bool   check_defense( splayer x, scard *card );
+seffect get_effect( scard x, scard y );
+void fdisp( scard card [], int n, FILE *x );
 #endif
