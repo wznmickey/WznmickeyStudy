@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.0] - 2020-11-20
+### Added
+ - demo mode
+ - player mode
+ - log
+### Changed
+ - structure defining
+### Removed
+None.
+
 ## [0.2.0] - 2020-11-04
 ### Added
  - progress the first player

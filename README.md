@@ -2,7 +2,7 @@
 
 ## How to use
 
-**compile `p2_main.c` and run the result**
+**use CMakeLists.txt**
 
 **DO NOT CHANGE ANY FILE UNLESS YOU FULLY UNDERSTAND WHAT YOU ARE DOING**
 
@@ -10,6 +10,9 @@
  - receive command options and print
  - draw and play cards and change related settings
  - choose first player
+ - demo mode
+ - player mode
+ - log
 
 ## License
 MIT
