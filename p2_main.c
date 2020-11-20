@@ -4,10 +4,10 @@ int main( int argc, char *argv [] )
 {
 
     options input_option = get_info( argc, argv );
-    sdeck * unhave       = ( sdeck * ) malloc( sizeof( sdeck ) + 52 * input_option.d * sizeof( scard ) );
+    sdeck * unhave       = ( sdeck * ) malloc( sizeof( sdeck ) + 52 * ( unsigned long long ) input_option.d * sizeof( scard ) );
     unhave->no           = -1;
     unhave->num          = input_option.d * 52;
-    splayer player [ input_option.n ];
+    splayer *player      = ( splayer * ) malloc( sizeof( player ) * ( unsigned long long ) input_option.n );
     for ( int i = 0; i < input_option.n; i++ ) { player [ i ].score = 0; }
     srand_init( );
 
@@ -33,26 +33,29 @@ int main( int argc, char *argv [] )
         player_get_card( player, input_option.n, input_option.c, unhave );
         printf( "Dealing cards...\n" );
         fprintf( filename, "Dealing cards...\n" );
-        int     now_player = check_first( player, input_option.n, unhave );
-        scard   now_card   = take_card( &ondesk, unhave );
+        int   now_player = check_first( player, input_option.n, unhave );
+        scard now_card   = take_card( &ondesk, unhave );
         scard before_card_flag;
         before_card_flag.suit = 100;
         before_card_flag.rank = 100;
-        seffect now_effect = get_effect( now_card ,before_card_flag);
+        seffect now_effect    = get_effect( now_card, before_card_flag );
         printf( "---- Game start ---\n" );
         printf( "First card:" );
         disp( &now_card, 1 );
         printf( "\n" );
         _Bool win     = false;
         _Bool reverse = false;
-        
+
         // disp( unhave->card, unhave->num );
         while ( ! win )
         {
 
-            if ( OS == 0 ) system( "clear" );
-            if ( OS == 1 ) system( "cls" );
-            if ( OS == 2 ) system( "clear" );
+            if ( OS == 0 )
+                if ( system( "clear" ) ) { }
+            if ( OS == 1 )
+                if ( system( "cls" ) ) { }
+            if ( OS == 2 )
+                if ( system( "clear" ) ) { }
             win                          = win_check( player, input_option.n );
             now_effect                   = get_effect( now_card, before_card_flag );
             before_card_flag             = now_card;
@@ -96,7 +99,7 @@ int main( int argc, char *argv [] )
                 printf( "\nPlayer %d:you have those card,plese choose one\n", now_player + 1 );
                 disp( ( player [ now_player ].card ), player [ now_player ].num_card );
                 printf( "\nfrom 1 to %d, 0 to abandon", player [ now_player ].num_card );
-                scanf( "%d", &temp_int );
+                if ( scanf( "%d", &temp_int ) ) { }
                 temp_int--;
                 if ( temp_int == -1 )
                 {
@@ -128,13 +131,14 @@ int main( int argc, char *argv [] )
         printf( "\n round %d ends.\n", round + 1 );
     }
     free( unhave );
+    free( player );
     fclose( filename );
     return 0;
 }
 
 void srand_init( )
 {
-    srand( time( NULL ) );
+    srand( ( unsigned int ) time( NULL ) );
     return;
 }
 void card_init( scard card [], int d )
@@ -153,7 +157,7 @@ void disp( scard card [], int n )
     // for ( int i = 0; i < n; i++ ) { card [ i ] = temp [ i ]; }
     char suit [ 4 ][ 9 ]  = { "Spades", "Hearts", "Diamonds", "Clubs" };                                      // MAX="Diamonds\0"
     char rank [ 13 ][ 6 ] = { "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace" }; // MAX="QUEEN\0"
-    qsort( card, n, sizeof( scard ), compare_scard );
+    qsort( card, ( unsigned long int ) n, sizeof( scard ), compare_scard );
     for ( int i = 0; i < n - 1; i++ ) { printf( "%s %s,", suit [ card [ i ].suit ], rank [ card [ i ].rank ] ); }
     printf( "%s %s", suit [ card [ n - 1 ].suit ], rank [ card [ n - 1 ].rank ] );
     return;
@@ -239,19 +243,19 @@ options get_info( int argc, char *argv [] )
                 strcpy( input_option.filename, optarg );
                 break;
             case 'n':
-                input_option.n = atol( optarg );
+                input_option.n = ( int ) atol( optarg );
                 printf( "number=%d\n", input_option.n );
                 break;
             case 'c':
-                input_option.c = atol( optarg );
+                input_option.c = ( int ) atol( optarg );
                 printf( "cards=%d\n", input_option.c );
                 break;
             case 'd':
-                input_option.d = atol( optarg );
+                input_option.d = ( int ) atol( optarg );
                 printf( "decks=%d\n", input_option.d );
                 break;
             case 'r':
-                input_option.r = atol( optarg );
+                input_option.r = ( int ) atol( optarg );
                 printf( "rounds=%d\n", input_option.r );
                 break;
             default:
@@ -311,10 +315,12 @@ void player_get_card( splayer player [], int n, int c, sdeck *unhave )
     for ( int i = 0; i < n; i++ )
     {
         printf( "Player %d:", i + 1 );
-        scard card [ n ];
+        // scard card [ n ];
+        scard *card = ( scard * ) malloc( sizeof( scard ) * ( unsigned long long ) n );
         for ( int j = 0; j < c; j++ ) { card [ j ] = take_card( &player [ i ], unhave ); }
         disp( card, c );
         printf( "\n" );
+        free( card );
     }
     return;
 }
@@ -346,8 +352,8 @@ _Bool check_defense( splayer x, scard *card )
     }
     if ( ans == 0 ) return false;
     printf( "\n You can defend by following cards. input 0 to abandon, int from 1 to %d to play\n", ans );
-    scard temp [ x.num_card ];
-    int   index = 0;
+    scard *temp  = ( scard * ) malloc( sizeof( scard ) * ( unsigned long long ) x.num_card );
+    int    index = 0;
     for ( int i = 0; i < x.num_card; i++ )
     {
         if ( x.card [ i ].rank == 5 )
@@ -357,11 +363,16 @@ _Bool check_defense( splayer x, scard *card )
         }
     }
     disp( temp, index - 1 );
-    scanf( "%d", &index );
+    if ( scanf( "%d", &index ) ) { }
     index--;
-    if ( index == -1 ) return false;
+    if ( index == -1 )
+    {
+        free( temp );
+        return false;
+    }
     *card = temp [ index ];
     card_remove( x.card, temp [ index ], &x.num_card );
+    free( temp );
     return true;
 }
 void card_remove( scard x [], scard ans, int *n )
@@ -383,10 +394,11 @@ void card_remove( scard x [], scard ans, int *n )
 void s_player_get_card( splayer player [], int n, int c, sdeck *unhave )
 {
     printf( "Player %d draws:", n + 1 );
-    scard card [ c ];
+    scard *card = ( scard * ) malloc( sizeof( scard ) * ( unsigned long long ) c );
     for ( int j = 0; j < c; j++ ) { card [ j ] = take_card( &player [ n ], unhave ); }
     disp( card, c );
     printf( "\n" );
+    free( card );
     return;
 }
 _Bool win_check( splayer x [], int n )
