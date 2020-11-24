@@ -4,7 +4,7 @@
 using namespace std;
 void ex4_1( );
 void ex4_2( );
-int  check( unsigned long long i, unsigned long long M, int N [] );
+int  check( unsigned long long i, unsigned long long &M, int N [] );
 void ex4( )
 {
     int x;
@@ -82,7 +82,7 @@ void ex4_2( )
     delete [] N;
     return;
 }
-int check( unsigned long long i, unsigned long long M,int N[] )
+int check( unsigned long long i, unsigned long long &M,int N[] )
 {
     if ( i == 1 ) return 0;
     // if ( N [ i ] != -1 ) return;

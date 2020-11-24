@@ -10,7 +10,6 @@ private:
 public:
     void printGrade( Grade *grade )
     {
-
         printf( "Grade: %d -> %c\n", grade->prct, grade->ltr );
     }
     void GradeLtr( Grade *grade, char ltr )
@@ -21,7 +20,7 @@ public:
     void GradePrct( Grade *grade, int prct )
     {
 
-        grade->prct = prct;
+        grade->prct = ( char ) prct;
         grade->ltr  = GRADES [ prct / 10 ];
     }
 };
@@ -31,7 +30,7 @@ int main( )
     Grade g;
     int   prct;
 
-    printf( "Input two space seprated grades (1st in %%, 2nd in letter): " );
+    printf( "Input two space seprated grades (1st in %%%%, 2nd in letter): " );
     cin >> prct;
     g.GradePrct( &g, prct );
     g.printGrade( &g );
