@@ -1,33 +1,30 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 static const char GRADES [] = { 'F', 'F', 'F', 'F', 'F', 'F', 'D', 'C', 'B', 'A', 'A' };
-
-typedef struct _Grade
+class Grade
 {
-
+private:
     char ltr;
-    int  prct;
-} Grade;
+    char prct;
 
-void GradePrct( Grade *grade, int prct )
-{
+public:
+    void printGrade( Grade *grade )
+    {
 
-    grade->prct = prct;
-    grade->ltr  = GRADES [ prct / 10 ];
-}
+        printf( "Grade: %d -> %c\n", grade->prct, grade->ltr );
+    }
+    void GradeLtr( Grade *grade, char ltr )
+    {
+        grade->ltr  = ltr;
+        grade->prct = 100 - ( ltr - 'A' ) * 10 - 5;
+    }
+    void GradePrct( Grade *grade, int prct )
+    {
 
-void GradeLtr( Grade *grade, char ltr )
-{
-    grade->ltr  = ltr;
-    grade->prct = 100 - ( ltr - 'A' ) * 10 - 5;
-}
-
-void printGrade( Grade *grade )
-{
-
-    printf( "Grade: %d -> %c\n", grade->prct, grade->ltr );
-}
+        grade->prct = prct;
+        grade->ltr  = GRADES [ prct / 10 ];
+    }
+};
 
 int main( )
 {
@@ -35,14 +32,12 @@ int main( )
     int   prct;
 
     printf( "Input two space seprated grades (1st in %%, 2nd in letter): " );
-    scanf( "%d", &prct );
-    scanf( "\n" );
-
-    GradePrct( &g, prct );
-    printGrade( &g );
-
-    GradeLtr( &g, getchar( ) );
-    printGrade( &g );
+    cin >> prct;
+    g.GradePrct( &g, prct );
+    g.printGrade( &g );
+    while ( cin.peek( ) == '\n' || cin.peek( ) == ' ' ) { cin.get( ); }
+    g.GradeLtr( &g, ( char ) cin.get( ) );
+    g.printGrade( &g );
 
     return 0;
 }
