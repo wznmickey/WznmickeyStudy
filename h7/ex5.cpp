@@ -10,7 +10,8 @@ private:
 public:
     void printGrade( Grade *grade )
     {
-        printf( "Grade: %d -> %c\n", grade->prct, grade->ltr );
+        cout << "Grade: " << ( int ) grade->prct << " -> " << ( char ) grade->ltr << endl;
+        // printf( "Grade: %d -> %c\n", grade->prct, grade->ltr );
     }
     void GradeLtr( Grade *grade, char ltr )
     {
@@ -29,14 +30,12 @@ int main( )
 {
     Grade g;
     int   prct;
-
-    printf( "Input two space seprated grades (1st in %%%%, 2nd in letter): " );
+    cout << "Input two space seprated grades (1st in %%, 2nd in letter): ";
     cin >> prct;
     g.GradePrct( &g, prct );
     g.printGrade( &g );
     while ( cin.peek( ) == '\n' || cin.peek( ) == ' ' ) { cin.get( ); }
     g.GradeLtr( &g, ( char ) cin.get( ) );
     g.printGrade( &g );
-
     return 0;
 }
