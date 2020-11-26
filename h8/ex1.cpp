@@ -21,7 +21,7 @@ void ex1_reverse_vector( )
     int              i = 0;
     while ( cin >> temp )
     {
-        input [ i ] = temp;
+        input.push_back( temp );
         i++;
     }
     i--;
@@ -30,6 +30,10 @@ void ex1_reverse_vector( )
         cout << input [ i ] << " ";
         i--;
     }
+    return;
+}
+void ex1_reverse_stack()
+{
     return;
 }
 int main( )
