@@ -4,7 +4,7 @@
 ***********************************/
 #ifndef PAINT
 #define PAINT
-#include<math.h>
+#include <math.h>
 class Point
 {
 public:
@@ -36,11 +36,11 @@ private:
 class Shape
 {
 public:
-    virtual ~Shape( ) = 0;
-    virtual void   move( double dx, double dy );
-    virtual void   zoom( double x );
-    virtual double area( );
-    virtual void   draw( );
+    virtual ~Shape( )                           = 0;
+    virtual void   move( double dx, double dy ) = 0;
+    virtual void   zoom( double x )             = 0;
+    virtual double area( )                      = 0;
+    virtual void   draw( )                      = 0;
 };
 
 class Triangle : public Shape

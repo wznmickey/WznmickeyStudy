@@ -8,6 +8,12 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Shape class
+Shape::~Shape( )
+{
+    return;
+}
+
 // Point class
 Point::Point( )
 {
@@ -74,7 +80,7 @@ double Triangle::area( )
 }
 void Triangle::draw( )
 {
-    glColor3f( 255, 255, 255 );
+    glColor3f( 0.5, 0.5, 0.5 );
     glBegin( GL_QUADS );
     glVertex2f( p1.getx( ), p1.gety( ) );
     glVertex2f( p2.getx( ), p2.gety( ) );
@@ -114,7 +120,7 @@ double Rectangle::area( )
 }
 void Rectangle::draw( )
 {
-    glColor3f( 255, 255, 255 );
+    glColor3f( 0.5, 0.5, 0.5 );
     glBegin( GL_QUADS );
     glVertex2f( p1.getx( ), p1.gety( ) );
     glVertex2f( p2.getx( ), p1.gety( ) );
@@ -166,7 +172,7 @@ double Parallelogram::area( )
 }
 void Parallelogram::draw( )
 {
-    glColor3f( 255, 255, 255 );
+    glColor3f( 0.5, 0.5, 0.5 );
     glBegin( GL_QUADS );
     glVertex2f( p1.getx( ), p1.gety( ) );
     glVertex2f( p2.getx( ), p2.gety( ) );
@@ -218,7 +224,7 @@ double Trapezium::area( )
 }
 void Trapezium::draw( )
 {
-    glColor3f( 255, 255, 255 );
+    glColor3f( 0.5, 0.5, 0.5 );
     glBegin( GL_QUADS );
     glVertex2f( p1.getx( ), p1.gety( ) );
     glVertex2f( p2.getx( ), p2.gety( ) );
@@ -234,9 +240,8 @@ void TimeStep( int n )
 }
 void glDraw( )
 {
-    double static width = 1, height = 1.5, owidth = .175;
-    Trapezium zh( { 0, 25 }, { 0, 5 }, { 15, 25 }, { 15, 26 } );
-    zh.zoom( 2 );
+    Trapezium zh( { 0.2, 0.5 }, { 0.2, 0.2 }, { 0.15, 0.25 }, { 0.15, 0.5 } );
+    zh.zoom( 1.1 );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     zh.draw( );
     glutSwapBuffers( );
@@ -252,4 +257,5 @@ int main( int argc, char *argv [] )
     glutDisplayFunc( glDraw );
     glutTimerFunc( 25, TimeStep, 25 );
     glutMainLoop( );
+    return 0;
 }
