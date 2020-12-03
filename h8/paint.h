@@ -13,33 +13,33 @@ public:
     {
         return;
     };
-    Point( double x, double y );
-    void   move( double dx, double dy );
-    void   zoom( double r );
-    double getx( )
+    Point( float x, float y );
+    void   move( float dx, float dy );
+    void   zoom( float r );
+    float getx( )
     {
         return x;
     }
-    double gety( )
+    float gety( )
     {
         return y;
     }
-    double length( Point a )
+    float length( Point a )
     {
         return sqrt( ( a.x - x ) * ( a.x - x ) + ( a.y - y ) * ( a.y - y ) );
     }
 
 private:
-    double x, y;
+    float x, y;
 };
 
 class Shape
 {
 public:
     virtual ~Shape( )                           = 0;
-    virtual void   move( double dx, double dy ) = 0;
-    virtual void   zoom( double x )             = 0;
-    virtual double area( )                      = 0;
+    virtual void   move( float dx, float dy ) = 0;
+    virtual void   zoom( float x )             = 0;
+    virtual float area( )                      = 0;
     virtual void   draw( )                      = 0;
 };
 
@@ -52,9 +52,9 @@ public:
     {
         return;
     }
-    void   move( double dx, double dy );
-    void   zoom( double x );
-    double area( );
+    void   move( float dx, float dy );
+    void   zoom( float x );
+    float area( );
     void   draw( );
 
 private:
@@ -70,9 +70,9 @@ public:
     {
         return;
     }
-    void   move( double dx, double dy );
-    void   zoom( double x );
-    double area( );
+    void   move( float dx, float dy );
+    void   zoom( float x );
+    float area( );
     void   draw( );
 
 private:
@@ -88,9 +88,9 @@ public:
     {
         return;
     }
-    void   move( double dx, double dy );
-    void   zoom( double x );
-    double area( );
+    void   move( float dx, float dy );
+    void   zoom( float x );
+    float area( );
     void   draw( );
 
 private:
@@ -106,9 +106,9 @@ public:
     {
         return;
     }
-    void   move( double dx, double dy );
-    void   zoom( double x );
-    double area( );
+    void   move( float dx, float dy );
+    void   zoom( float x );
+    float area( );
     void   draw( );
 
 private:

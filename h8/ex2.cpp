@@ -21,19 +21,19 @@ Point::Point( )
     y = 0;
     return;
 }
-Point::Point( double x, double y )
+Point::Point( float x, float y )
 {
     this->x = x;
     this->y = y;
     return;
 }
-void Point::move( double dx, double dy )
+void Point::move( float dx, float dy )
 {
     x += dx;
     y += dy;
     return;
 }
-void Point::zoom( double r )
+void Point::zoom( float r )
 {
     x *= r;
     y *= r;
@@ -55,27 +55,27 @@ Triangle::Triangle( Point p1, Point p2, Point p3 )
     this->p3 = p3;
     return;
 }
-void Triangle::move( double dx, double dy )
+void Triangle::move( float dx, float dy )
 {
     p1.move( dx, dy );
     p2.move( dx, dy );
     p3.move( dx, dy );
     return;
 }
-void Triangle::zoom( double r )
+void Triangle::zoom( float r )
 {
     p1.zoom( r );
     p2.zoom( r );
     p3.zoom( r );
     return;
 }
-double Triangle::area( )
+float Triangle::area( )
 {
     // using Heron's formula
-    double a = p1.length( p2 );
-    double b = p2.length( p3 );
-    double c = p3.length( p1 );
-    double p = a + b + c;
+    float a = p1.length( p2 );
+    float b = p2.length( p3 );
+    float c = p3.length( p1 );
+    float p = a + b + c;
     return sqrt( p * ( p - a ) * ( p - b ) * ( p - c ) );
 }
 void Triangle::draw( )
@@ -102,19 +102,19 @@ Rectangle::Rectangle( Point p1, Point p2 )
     this->p2 = p2;
     return;
 }
-void Rectangle::move( double dx, double dy )
+void Rectangle::move( float dx, float dy )
 {
     p1.move( dx, dy );
     p2.move( dx, dy );
     return;
 }
-void Rectangle::zoom( double r )
+void Rectangle::zoom( float r )
 {
     p1.zoom( r );
     p2.zoom( r );
     return;
 }
-double Rectangle::area( )
+float Rectangle::area( )
 {
     return fabs( ( p1.getx( ) - p2.getx( ) ) ) * fabs( ( p1.gety( ) - p2.gety( ) ) );
 }
@@ -147,7 +147,7 @@ Parallelogram::Parallelogram( Point p1, Point p2, Point p3, Point p4 )
     this->p4 = p4;
     return;
 }
-void Parallelogram::move( double dx, double dy )
+void Parallelogram::move( float dx, float dy )
 {
     p1.move( dx, dy );
     p2.move( dx, dy );
@@ -155,7 +155,7 @@ void Parallelogram::move( double dx, double dy )
     p4.move( dx, dy );
     return;
 }
-void Parallelogram::zoom( double r )
+void Parallelogram::zoom( float r )
 {
     p1.zoom( r );
     p2.zoom( r );
@@ -163,7 +163,7 @@ void Parallelogram::zoom( double r )
     p4.zoom( r );
     return;
 }
-double Parallelogram::area( )
+float Parallelogram::area( )
 {
     Triangle a, b;
     a = Triangle( p1, p2, p3 );
@@ -199,7 +199,7 @@ Trapezium::Trapezium( Point p1, Point p2, Point p3, Point p4 )
     this->p4 = p4;
     return;
 }
-void Trapezium::move( double dx, double dy )
+void Trapezium::move( float dx, float dy )
 {
     p1.move( dx, dy );
     p2.move( dx, dy );
@@ -207,7 +207,7 @@ void Trapezium::move( double dx, double dy )
     p4.move( dx, dy );
     return;
 }
-void Trapezium::zoom( double r )
+void Trapezium::zoom( float r )
 {
     p1.zoom( r );
     p2.zoom( r );
@@ -215,7 +215,7 @@ void Trapezium::zoom( double r )
     p4.zoom( r );
     return;
 }
-double Trapezium::area( )
+float Trapezium::area( )
 {
     Triangle a, b;
     a = Triangle( p1, p2, p3 );
