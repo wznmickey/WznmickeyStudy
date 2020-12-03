@@ -235,12 +235,12 @@ void Trapezium::draw( )
 }
 void TimeStep( int n )
 {
-    glutTimerFunc( n, TimeStep, n );
+    glutTimerFunc( ( unsigned int ) n, TimeStep, ( unsigned int ) n );
     glutPostRedisplay( );
 }
 void glDraw( )
 {
-    Trapezium zh( { 0.2, 0.5 }, { 0.2, 0.2 }, { 0.15, 0.25 }, { 0.15, 0.5 } );
+    Trapezium zh( { ( float ) 0.2, ( float ) 0.5 }, { ( float ) 0.2, ( float ) 0.2 }, { ( float ) 0.15, ( float ) 0.25 }, { ( float ) 0.15, ( float ) 0.5 } );
     zh.zoom( 1.1 );
     glClear( GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT );
     zh.draw( );
