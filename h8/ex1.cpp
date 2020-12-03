@@ -6,11 +6,17 @@
 #include "assignment.h"
 #include <bits/stdc++.h>
 using namespace std;
+#define MAX_LENGTH 5000
 void ex1_reverse_array( )
 {
-    string input [ 100 ];
+    string input [ MAX_LENGTH ];
+    string temp;
     int    i = 0;
-    while ( cin >> input [ i ] ) i++;
+    while ( cin >> temp )
+    {
+        input [ i ] = temp;
+        i++;
+    }
     i--;
     while ( i >= 0 )
     {
@@ -32,7 +38,7 @@ void ex1_reverse_vector( )
     i--;
     while ( i >= 0 )
     {
-        cout << input [ i ] << " ";
+        cout << input [ ( unsigned long ) i ] << " ";
         i--;
     }
     return;
@@ -51,10 +57,15 @@ void ex1_reverse_stack( )
 }
 void ex1_ordered_array( )
 {
-    string input [ 100 ];
+    string input [ MAX_LENGTH ];
+    string temp;
     int    i = 0;
-    while ( cin >> input [ i ] ) i++;
-    for ( int j = 0; j <= i; j++ ) { cout << input [ j ] << " "; }
+    while ( cin >> temp )
+    {
+        input [ i ] = temp;
+        i++;
+    }
+    for ( int j = 0; j < i; j++ ) { cout << input [ j ] << " "; }
     return;
 }
 void ex1_ordered_vector( )
@@ -68,7 +79,7 @@ void ex1_ordered_vector( )
         i++;
     }
     i--;
-    for ( int j = 0; j <= i; j++ ) { cout << input [ j ] << " "; }
+    for ( int j = 0; j <= i; j++ ) { cout << input [ ( unsigned long ) j ] << " "; }
     return;
 }
 void ex1_ordered_queue( )
