@@ -114,13 +114,5 @@ public:
 private:
     Point p1, p2, p3, p4;
 };
-class Circle : public Shape
-{
-    public:
-    Circle();
-    Circle(double r,Point p);
-    ~Circle(){
-        return;
-    }
-}
+
 #endif // PAINT
