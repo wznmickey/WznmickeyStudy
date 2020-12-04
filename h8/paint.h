@@ -2,20 +2,41 @@
     Written by WANGZINING
     blog: https://wznmickey.com
 ***********************************/
-#ifndef PAINT
-#define PAINT
-#include <math.h>
+#ifndef PAINT_mickey_H
+#define PAINT_mickey_H
+#include "color.h"
+#include <bits/stdc++.h>
 class Point
 {
 public:
-    Point( );
     ~Point( )
     {
         return;
     };
-    Point( float x, float y );
-    void   move( float dx, float dy );
-    void   zoom( float r );
+    Point( )
+    {
+        x = 0;
+        y = 0;
+        return;
+    }
+    Point( float x, float y )
+    {
+        this->x = x;
+        this->y = y;
+        return;
+    }
+    void move( float dx, float dy )
+    {
+        x += dx;
+        y += dy;
+        return;
+    }
+    void zoom( float r )
+    {
+        x *= r;
+        y *= r;
+        return;
+    }
     float getx( )
     {
         return x;
@@ -36,11 +57,14 @@ private:
 class Shape
 {
 public:
-    virtual ~Shape( )                           = 0;
-    virtual void   move( float dx, float dy ) = 0;
-    virtual void   zoom( float x )             = 0;
-    virtual float area( )                      = 0;
-    virtual void   draw( )                      = 0;
+    ~Shape( )
+    {
+        return;
+    }
+    virtual void  move( float dx, float dy ) = 0;
+    virtual void  zoom( float x )            = 0;
+    virtual float area( )                    = 0;
+    virtual void  draw( )                    = 0;
 };
 
 class Triangle : public Shape
@@ -52,10 +76,10 @@ public:
     {
         return;
     }
-    void   move( float dx, float dy );
-    void   zoom( float x );
+    void  move( float dx, float dy );
+    void  zoom( float x );
     float area( );
-    void   draw( );
+    void  draw( );
 
 private:
     Point p1, p2, p3;
@@ -70,10 +94,10 @@ public:
     {
         return;
     }
-    void   move( float dx, float dy );
-    void   zoom( float x );
+    void  move( float dx, float dy );
+    void  zoom( float x );
     float area( );
-    void   draw( );
+    void  draw( );
 
 private:
     Point p1, p2;
@@ -88,10 +112,10 @@ public:
     {
         return;
     }
-    void   move( float dx, float dy );
-    void   zoom( float x );
+    void  move( float dx, float dy );
+    void  zoom( float x );
     float area( );
-    void   draw( );
+    void  draw( );
 
 private:
     Point p1, p2, p3, p4;
@@ -106,13 +130,13 @@ public:
     {
         return;
     }
-    void   move( float dx, float dy );
-    void   zoom( float x );
+    void  move( float dx, float dy );
+    void  zoom( float x );
     float area( );
-    void   draw( );
+    void  draw( );
 
 private:
     Point p1, p2, p3, p4;
 };
 
-#endif // PAINT
+#endif

@@ -8,38 +8,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Shape class
-Shape::~Shape( )
-{
-    return;
-}
-
-// Point class
-Point::Point( )
-{
-    x = 0;
-    y = 0;
-    return;
-}
-Point::Point( float x, float y )
-{
-    this->x = x;
-    this->y = y;
-    return;
-}
-void Point::move( float dx, float dy )
-{
-    x += dx;
-    y += dy;
-    return;
-}
-void Point::zoom( float r )
-{
-    x *= r;
-    y *= r;
-    return;
-}
-
 // Triangle class
 Triangle::Triangle( )
 {
@@ -81,7 +49,7 @@ float Triangle::area( )
 void Triangle::draw( )
 {
     glColor3f( 0.5, 0.5, 0.5 );
-    glBegin( GL_QUADS );
+    glBegin( GL_POLYGON );
     glVertex2f( p1.getx( ), p1.gety( ) );
     glVertex2f( p2.getx( ), p2.gety( ) );
     glVertex2f( p3.getx( ), p3.gety( ) );
@@ -121,7 +89,7 @@ float Rectangle::area( )
 void Rectangle::draw( )
 {
     glColor3f( 0.5, 0.5, 0.5 );
-    glBegin( GL_QUADS );
+    glBegin( GL_POLYGON );
     glVertex2f( p1.getx( ), p1.gety( ) );
     glVertex2f( p2.getx( ), p1.gety( ) );
     glVertex2f( p2.getx( ), p2.gety( ) );
@@ -173,7 +141,7 @@ float Parallelogram::area( )
 void Parallelogram::draw( )
 {
     glColor3f( 0.5, 0.5, 0.5 );
-    glBegin( GL_QUADS );
+    glBegin( GL_POLYGON );
     glVertex2f( p1.getx( ), p1.gety( ) );
     glVertex2f( p2.getx( ), p2.gety( ) );
     glVertex2f( p3.getx( ), p3.gety( ) );
@@ -225,7 +193,7 @@ float Trapezium::area( )
 void Trapezium::draw( )
 {
     glColor3f( 0.5, 0.5, 0.5 );
-    glBegin( GL_QUADS );
+    glBegin( GL_POLYGON );
     glVertex2f( p1.getx( ), p1.gety( ) );
     glVertex2f( p2.getx( ), p2.gety( ) );
     glVertex2f( p3.getx( ), p3.gety( ) );
