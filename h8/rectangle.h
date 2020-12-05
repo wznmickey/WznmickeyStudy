@@ -2,52 +2,52 @@
     Written by WANGZINING
     blog: https://wznmickey.com
 ***********************************/
-#ifndef CIRCLE_mickey_H
-#define CIRCLE_mickey_H
+#ifndef RECTANGLE_mickey_H
+#define RECTANGLE_mickey_H
 #include "color.h"
 #include "point.h"
 #include "shape.h"
-
-#define PI            3.1415926
-#define CIRCLE_LENGTH 50
-class Circle : public Shape
+class Rectangle : public Shape
 {
 public:
-    ~Circle( )
+    ~Rectangle( )
     {
         return;
     }
-    Circle( )
+
+    Rectangle( )
     {
         p1 = Point( 0, 0 );
-        r  = ( float ) 1.0;
+        p2 = Point( 0, 0 );
         return;
     }
-    Circle( Point p1, float r )
+    Rectangle( Point p1, Point p2 )
     {
         this->p1 = p1;
-        this->r  = r;
+        this->p2 = p2;
         return;
     }
     void move( float dx, float dy )
     {
         p1.move( dx, dy );
+        p2.move( dx, dy );
         return;
     }
     void zoom( float r )
     {
-        this->r *= r;
+        p1.zoom( r );
+        p2.zoom( r );
         return;
     }
     float area( )
     {
-        return PI * r * r;
+        return fabs( ( p1.getx( ) - p2.getx( ) ) ) * fabs( ( p1.gety( ) - p2.gety( ) ) );
     }
+
     void draw( );
 
 private:
-    Point p1;
-    float r;
+    Point p1, p2;
     Color c;
 };
 

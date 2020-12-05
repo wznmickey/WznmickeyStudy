@@ -2,10 +2,13 @@
     Written by WANGZINING
     blog: https://wznmickey.com
 ***********************************/
-#ifndef PAINT_mickey_H
-#define PAINT_mickey_H
+#ifndef DRAWCOLOR_mickey_H
+#define DRAWCOLOR_mickey_H
 #include "color.h"
-#include <bits/stdc++.h>
-
-
+#include <GL/glut.h>
+void Color::set( )
+{
+    glColor4f( red, green, blue, alpha );
+    return;
+}
 #endif

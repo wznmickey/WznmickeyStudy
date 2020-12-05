@@ -10,10 +10,10 @@ class Color
 public:
     Color( )
     {
-        this->r = 0;
-        this->g = 0;
-        this->b = 0;
-        this->a = 0;
+        this->red   = 0;
+        this->green = 0;
+        this->blue  = 0;
+        this->alpha = 0;
         return;
     }
     ~Color( )
@@ -22,58 +22,59 @@ public:
     }
     Color( float r, float g, float b )
     {
-        this->r = r;
-        this->g = g;
-        this->b = b;
-        this->a = 0;
+        this->red   = r;
+        this->green = g;
+        this->blue  = b;
+        this->alpha = 0;
         return;
     }
     Color( float r, float g, float b, float a )
     {
-        this->r = r;
-        this->g = g;
-        this->b = b;
-        this->a = a;
+        this->red   = r;
+        this->green = g;
+        this->blue  = b;
+        this->alpha = a;
         return;
     }
     float getr( )
     {
-        return r;
+        return red;
     }
     float getg( )
     {
-        return g;
+        return green;
     }
     float getb( )
     {
-        return b;
+        return blue;
     }
     float geta( )
     {
-        return a;
+        return alpha;
     }
     void changer( float r )
     {
-        this->r = r;
+        this->red = r;
         return;
     }
     void changeg( float g )
     {
-        this->g = g;
+        this->green = g;
         return;
     }
     void changeb( float b )
     {
-        this->b = b;
+        this->blue = b;
         return;
     }
     void changea( float a )
     {
-        this->a = a;
+        this->alpha = a;
         return;
     }
+    void set( );
 
 private:
-    float r, g, b, a;
+    float red, green, blue, alpha;
 };
 #endif
