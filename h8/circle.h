@@ -32,6 +32,20 @@ public:
         this->c  = Color( );
         return;
     }
+    Circle( Point p1, double r )
+    {
+        this->p1 = p1;
+        this->r  = ( float ) r;
+        this->c  = Color( );
+        return;
+    }
+    Circle( Point p1, int r )
+    {
+        this->p1 = p1;
+        this->r  = ( float ) r;
+        this->c  = Color( );
+        return;
+    }
     Circle( Point p1, float r, Color c )
     {
         this->p1 = p1;
@@ -39,9 +53,23 @@ public:
         this->c  = c;
         return;
     }
-    void move( float dx, float dy )
+    Circle( Point p1, double r, Color c )
     {
-        p1.move( dx, dy );
+        this->p1 = p1;
+        this->r  = ( float ) r;
+        this->c  = c;
+        return;
+    }
+    Circle( Point p1, int r, Color c )
+    {
+        this->p1 = p1;
+        this->r  = ( float ) r;
+        this->c  = c;
+        return;
+    }
+    void move( double dx, double dy )
+    {
+        p1.move( ( float ) dx, ( float ) dy );
         return;
     }
     void zoom( float r )
@@ -51,17 +79,17 @@ public:
     }
     float area( )
     {
-        return (float)PI * r * r;
+        return ( float ) PI * r * r;
     }
     float getr( )
     {
         return r;
     }
-    Point getp()
+    Point getp( )
     {
         return p1;
     }
-    Color getc()
+    Color getc( )
     {
         return c;
     }
