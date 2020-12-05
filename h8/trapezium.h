@@ -23,6 +23,7 @@ public:
         p2 = Point( 0, 0 );
         p3 = Point( 0, 0 );
         p4 = Point( 0, 0 );
+        c  = Color( );
         return;
     }
     Trapezium( Point p1, Point p2, Point p3, Point p4 )
@@ -31,6 +32,16 @@ public:
         this->p2 = p2;
         this->p3 = p3;
         this->p4 = p4;
+        c        = Color( );
+        return;
+    }
+    Trapezium( Point p1, Point p2, Point p3, Point p4 ,Color c)
+    {
+        this->p1 = p1;
+        this->p2 = p2;
+        this->p3 = p3;
+        this->p4 = p4;
+        this->c  = c;
         return;
     }
     void move( float dx, float dy )

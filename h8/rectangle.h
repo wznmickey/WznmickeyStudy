@@ -17,14 +17,23 @@ public:
 
     Rectangle( )
     {
-        p1 = Point( 0, 0 );
-        p2 = Point( 0, 0 );
+        p1      = Point( 0, 0 );
+        p2      = Point( 0, 0 );
+        this->c = Color( );
         return;
     }
     Rectangle( Point p1, Point p2 )
     {
         this->p1 = p1;
         this->p2 = p2;
+        this->c  = Color( );
+        return;
+    }
+    Rectangle( Point p1, Point p2, Color c )
+    {
+        this->p1 = p1;
+        this->p2 = p2;
+        this->c  = c;
         return;
     }
     void move( float dx, float dy )

@@ -20,6 +20,7 @@ public:
         p1 = Point( 0, 0 );
         p2 = Point( 0, 0 );
         p3 = Point( 0, 0 );
+        c  = Color( );
         return;
     }
     Triangle( Point p1, Point p2, Point p3 )
@@ -27,6 +28,15 @@ public:
         this->p1 = p1;
         this->p2 = p2;
         this->p3 = p3;
+        c        = Color( );
+        return;
+    }
+    Triangle( Point p1, Point p2, Point p3, Color c )
+    {
+        this->p1 = p1;
+        this->p2 = p2;
+        this->p3 = p3;
+        this->c  = c;
         return;
     }
     void move( float dx, float dy )

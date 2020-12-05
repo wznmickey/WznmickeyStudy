@@ -21,12 +21,21 @@ public:
     {
         p1 = Point( 0, 0 );
         r  = ( float ) 1.0;
+        c  = Color( );
         return;
     }
     Circle( Point p1, float r )
     {
         this->p1 = p1;
         this->r  = r;
+        this->c  = Color( );
+        return;
+    }
+    Circle( Point p1, float r, Color c )
+    {
+        this->p1 = p1;
+        this->r  = r;
+        this->c  = c;
         return;
     }
     void move( float dx, float dy )
