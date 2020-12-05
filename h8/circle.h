@@ -67,7 +67,7 @@ public:
         this->c  = c;
         return;
     }
-    void move( double dx, double dy )
+    void move( float dx, float dy )
     {
         p1.move( ( float ) dx, ( float ) dy );
         return;
