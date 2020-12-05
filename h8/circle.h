@@ -51,7 +51,7 @@ public:
     }
     float area( )
     {
-        return PI * r * r;
+        return (float)PI * r * r;
     }
     float getr( )
     {
