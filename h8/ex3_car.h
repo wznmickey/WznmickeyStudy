@@ -51,18 +51,19 @@ public:
     {
         return r.getp1( );
     }
-    void run( float x )
+    void run( double x )
     {
-        if ( direction == true ) move( x, 0 );
+        if ( direction == true ) move( ( float ) x, 0 );
         else
-            move( -x, 0 );
+            move( ( float ) -x, 0 );
         return;
     }
-    void reverse()
+    void reverse( )
     {
-        direction=!direction;
+        direction = ! direction;
         return;
     }
+
 private:
     Circle    lw, rw; // left wheel & right wheel
     Rectangle r;

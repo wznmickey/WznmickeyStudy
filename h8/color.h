@@ -20,20 +20,20 @@ public:
     {
         return;
     }
-    Color( float r, float g, float b )
+    Color( double r, double g, double b )
     {
-        this->red   = r;
-        this->green = g;
-        this->blue  = b;
-        this->alpha = 1;
+        this->red   = ( float ) r;
+        this->green = ( float ) g;
+        this->blue  = ( float ) b;
+        this->alpha = ( float ) 1;
         return;
     }
-    Color( float r, float g, float b, float a )
+    Color( double r, double g, double b, double a )
     {
-        this->red   = r;
-        this->green = g;
-        this->blue  = b;
-        this->alpha = a;
+        this->red   = ( float ) r;
+        this->green = ( float ) g;
+        this->blue  = ( float ) b;
+        this->alpha = ( float ) a;
         return;
     }
     float getr( )
