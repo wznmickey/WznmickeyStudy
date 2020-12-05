@@ -24,6 +24,12 @@ public:
         this->y = y;
         return;
     }
+    Point( double x, double y )
+    {
+        this->x = ( float ) x;
+        this->y = ( float ) y;
+        return;
+    }
     void move( float dx, float dy )
     {
         x += dx;
