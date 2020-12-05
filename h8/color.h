@@ -13,7 +13,7 @@ public:
         this->red   = 0;
         this->green = 0;
         this->blue  = 0;
-        this->alpha = 0;
+        this->alpha = 1;
         return;
     }
     ~Color( )
@@ -25,7 +25,7 @@ public:
         this->red   = r;
         this->green = g;
         this->blue  = b;
-        this->alpha = 0;
+        this->alpha = 1;
         return;
     }
     Color( float r, float g, float b, float a )

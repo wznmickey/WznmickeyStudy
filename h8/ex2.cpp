@@ -5,7 +5,6 @@
 #include "assignment.h"
 #include "opengldraw.h"
 using namespace std;
-// Trapezium class
 
 void TimeStep( int n )
 {

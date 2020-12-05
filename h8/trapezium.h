@@ -4,7 +4,7 @@
 ***********************************/
 #ifndef TRAPEZIUM_mickey_H
 #define TRAPEZIUM_mickey_H
-
+//梯形
 #include "color.h"
 #include "point.h"
 #include "shape.h"
@@ -35,7 +35,7 @@ public:
         c        = Color( );
         return;
     }
-    Trapezium( Point p1, Point p2, Point p3, Point p4 ,Color c)
+    Trapezium( Point p1, Point p2, Point p3, Point p4, Color c )
     {
         this->p1 = p1;
         this->p2 = p2;
@@ -67,7 +67,26 @@ public:
         b = Triangle( p2, p3, p4 );
         return a.area( ) + b.area( );
     }
-
+    Point getp1( )
+    {
+        return p1;
+    }
+    Point getp2( )
+    {
+        return p2;
+    }
+    Point getp3( )
+    {
+        return p3;
+    }
+    Point getp4( )
+    {
+        return p4;
+    }
+    Color getc( )
+    {
+        return c;
+    }
     void draw( );
 
 private:

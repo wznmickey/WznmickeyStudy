@@ -4,6 +4,7 @@
 ***********************************/
 #ifndef CIRCLE_mickey_H
 #define CIRCLE_mickey_H
+//圆
 #include "color.h"
 #include "point.h"
 #include "shape.h"
@@ -51,6 +52,18 @@ public:
     float area( )
     {
         return PI * r * r;
+    }
+    float getr( )
+    {
+        return r;
+    }
+    Point getp()
+    {
+        return p1;
+    }
+    Color getc()
+    {
+        return c;
     }
     void draw( );
 

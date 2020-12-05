@@ -4,6 +4,7 @@
 ***********************************/
 #ifndef RECTANGLE_mickey_H
 #define RECTANGLE_mickey_H
+//矩形
 #include "color.h"
 #include "point.h"
 #include "shape.h"
@@ -52,7 +53,18 @@ public:
     {
         return fabs( ( p1.getx( ) - p2.getx( ) ) ) * fabs( ( p1.gety( ) - p2.gety( ) ) );
     }
-
+Point getp1( )
+    {
+        return p1;
+    }
+    Point getp2( )
+    {
+        return p2;
+    }
+    Color getc( )
+    {
+        return c;
+    }
     void draw( );
 
 private:

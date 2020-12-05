@@ -4,6 +4,7 @@
 ***********************************/
 #ifndef TRIANGLE_mickey_H
 #define TRIANGLE_mickey_H
+//三角形
 #include "color.h"
 #include "point.h"
 #include "shape.h"
@@ -61,6 +62,22 @@ public:
         float c = p3.length( p1 );
         float p = a + b + c;
         return sqrt( p * ( p - a ) * ( p - b ) * ( p - c ) );
+    }
+    Point getp1( )
+    {
+        return p1;
+    }
+    Point getp2( )
+    {
+        return p2;
+    }
+    Point getp3( )
+    {
+        return p3;
+    }
+    Color getc( )
+    {
+        return c;
     }
     void draw( );
 

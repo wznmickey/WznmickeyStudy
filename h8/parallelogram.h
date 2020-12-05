@@ -4,7 +4,7 @@
 ***********************************/
 #ifndef PARALLELOGRAM_mickey_H
 #define PARALLELOGRAM_mickey_H
-
+//平行四边形
 #include "color.h"
 #include "point.h"
 #include "shape.h"
@@ -67,7 +67,26 @@ public:
         b = Triangle( p2, p3, p4 );
         return a.area( ) + b.area( );
     }
-
+Point getp1( )
+    {
+        return p1;
+    }
+    Point getp2( )
+    {
+        return p2;
+    }
+    Point getp3( )
+    {
+        return p3;
+    }
+    Point getp4( )
+    {
+        return p4;
+    }
+    Color getc( )
+    {
+        return c;
+    }
     void draw( );
 
 private:
