@@ -1,10 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
-int a[15];
+int a[15], h, ans;
 int main()
 {
-    int h;
-    int ans = 0;
+    ans = 0;
     for (int i = 1; i <= 10; i++)
     {
         scanf("%d", &a[i]);
