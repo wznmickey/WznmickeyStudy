@@ -1,0 +1,95 @@
+README
+
+## ex1
+
+## ex2
+
+Example: n=1502
+
+First print "Input an integer: "(note that there is a space after ':')
+
+after getting the integer
+
+print": "(note that there is a space after ':')
+
+and turn flag to 1 (meaning not having outputted any number)
+
+n is greater than 1000 so first check the part of 1502/1000 (aka 1) (part A) and the 1502%1000(aka 502)(part B).
+
+For part A, 1 < 1000 , 1 < 100 ,1 < 20 ,1<10 and 1>=1
+
+so print "one" and return.
+
+turn flag to 0.
+
+print" thousand"
+
+For part B, 502<1000 ,502>=100
+
+so print "five hundred and" then check 502%100(aka 2)
+
+2<20 ,2<10 and 2>=1
+
+so print "two"
+
+return.
+
+## ex3
+
+a)
+
+1/1
+1/2
+2/1
+3/1
+2/2
+1/3
+1/4
+2/3
+3/2
+4/1
+5/1
+4/2
+3/3
+
+b)
+for m/n first let m+n=2
+
+so m=n=1;
+
+then let m+n=3
+
+and start from m=1
+
+then m=2
+
+then m+n=4
+
+start from n=1,then n=2 ,n=3 ...
+
+so for m+n is even, start from n=1
+
+for m+n is odd, start from m=1
+
+c)
+
+input: n
+output: a/b
+
+i<-1
+while (n>i)
+{
+    n<-(n-i)
+    i<-(i+1)
+}
+if (i%2==0) 
+{
+    b<-(i+1-n)
+    a<-n
+}
+else 
+{
+    a<-(i+1-n)
+    b<-n
+}
+return a,b
